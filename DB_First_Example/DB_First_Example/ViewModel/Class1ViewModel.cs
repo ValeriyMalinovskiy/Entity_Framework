@@ -11,12 +11,7 @@ namespace DB_First_Example.ViewModel
         {
             using (var context = new ZzaContext())
             {
-                DbSet<Product> tempDBSet = context.Product;
-                this.DBProducts = new ObservableCollection<Product>();
-                foreach (var item in tempDBSet)
-                {
-                    DBProducts.Add(item);
-                }
+                this.DBProducts = new ObservableCollection<Product>(context.Product);
             }
         }
 
