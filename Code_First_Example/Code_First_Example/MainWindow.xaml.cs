@@ -1,5 +1,4 @@
-﻿using DB_First_Example.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DB_First_Example
+namespace Code_First_Example
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

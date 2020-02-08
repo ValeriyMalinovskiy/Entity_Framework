@@ -1,9 +1,6 @@
-﻿using DB_First_Example.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DB_First_Example
+namespace DB_First_Example.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControlView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControlView : UserControl
     {
-        public MainWindow()
+        public UserControlView()
         {
             InitializeComponent();
         }
