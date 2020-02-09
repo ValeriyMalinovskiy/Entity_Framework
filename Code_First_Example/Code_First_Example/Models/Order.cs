@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Code_First_Example.Models
 {
-    class Order
+    public class Order
     {
-        public int Id{ get; set; }
+        public int Id { get; set; }
 
         public DateTime OrderDate { get; set; }
 
@@ -21,5 +21,9 @@ namespace Code_First_Example.Models
         public string DeliveryCity { get; set; }
 
         public int DeliveryZip { get; set; }
+
+        public OrderStatus OrderStatus { get; set; }
+
+        public ICollection<OrderItem> OrderItems{get;set;}
     }
 }

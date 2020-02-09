@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Code_First_Example.Models
 {
-    class Store
+    public class Store
     {
         public int Id { get; set; }
 
@@ -14,6 +14,6 @@ namespace Code_First_Example.Models
 
         public string WebSite { get; set; }
 
-
+        public ICollection<Customer> Customers { get; set; }
     }
 }

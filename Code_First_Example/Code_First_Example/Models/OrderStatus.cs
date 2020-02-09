@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Code_First_Example.Models
 {
-    class OrderStatus
+    public class OrderStatus
     {
         public int Id { get; set; }
 

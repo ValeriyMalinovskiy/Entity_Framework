@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Code_First_Example.Models
 {
-    class Address
+    public class Address
     {
         public int Id { get; set; }
 

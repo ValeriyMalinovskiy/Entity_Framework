@@ -1,5 +1,4 @@
 ﻿using DB_First_Example.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -11,7 +10,7 @@ namespace DB_First_Example.ViewModel
         {
             using (var context = new ZzaContext())
             {
-                this.DBProducts = new ObservableCollection<Product>(context.Product);
+                DBProducts = new ObservableCollection<Product>(context.Product);
             }
         }
 

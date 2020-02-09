@@ -10,7 +10,5 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid>
-        <view:UserControlView />
-    </Grid>
+    <view:UserControlView />
 </Window>
