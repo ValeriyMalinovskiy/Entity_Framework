@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Code_First_Example.Models
 {
@@ -24,6 +23,6 @@ namespace Code_First_Example.Models
 
         public OrderStatus OrderStatus { get; set; }
 
-        public ICollection<OrderItem> OrderItems{get;set;}
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

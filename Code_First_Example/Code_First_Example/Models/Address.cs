@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Code_First_Example.Models
+﻿namespace Code_First_Example.Models
 {
     public class Address
     {
