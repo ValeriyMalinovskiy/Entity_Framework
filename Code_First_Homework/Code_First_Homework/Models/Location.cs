@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Code_First_Homework.Models
 {
     public class Location
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [MaxLength(25)]
@@ -14,10 +14,10 @@ namespace Code_First_Homework.Models
 
         [MaxLength(12)]
         public string PostalCode { get; set; }
-        
+
         [MaxLength(30)]
         public string City { get; set; }
-        
+
         [MaxLength(12)]
         public string StateProvince { get; set; }
 

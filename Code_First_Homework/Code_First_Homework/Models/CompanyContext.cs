@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Code_First_Homework.Models
 {
-    public class CompanyContext:DbContext
+    public class CompanyContext : DbContext
     {
         public DbSet<Region> Regions { get; set; }
 
@@ -26,6 +23,12 @@ namespace Code_First_Homework.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Database=CompanyDB;Trusted_Connection=True;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<JobHistory>()
+                .HasKey(h => new { h.EmployeeId, h.StartDate });
         }
     }
 }

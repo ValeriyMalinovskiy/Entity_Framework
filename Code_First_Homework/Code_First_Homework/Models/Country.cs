@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Code_First_Homework.Models
 {
     public class Country
     {
-        [MaxLength(2), MinLength(2),Key]
+        [StringLength(2)]
         public string Id { get; set; }
 
         [MaxLength(40)]
