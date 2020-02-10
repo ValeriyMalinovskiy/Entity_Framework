@@ -9,7 +9,7 @@ namespace Code_First_Homework.Models
         [Key, Column(Order = 1)]
         public int EmployeeId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity), Column(Order = 2)]
+        [Key, Column(Order = 2)]
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

@@ -6,7 +6,6 @@ namespace Code_First_Homework.Models
 {
     public class Region
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [MaxLength(25)]
