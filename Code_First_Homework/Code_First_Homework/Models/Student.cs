@@ -4,17 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Code_First_Homework.Models
 {
-    public class Department
+    public class Student
     {
         public int Id { get; set; }
 
-        [MaxLength(30)]
         public string Name { get; set; }
 
-        public int ManagerId { get; set; }
+        public Grade Grade { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public int GradeId { get; set; }
 
-        public ICollection<JobHistory> JobHistories { get; set; }
+        public StudentAddress Address { get; set; }
+
+        public ICollection<StudentCourse> StudentCourses { get; set; }
     }
 }

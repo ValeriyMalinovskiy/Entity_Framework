@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Code_First_Homework.Models
 {
-    public class Region
+    public class School
     {
         public int Id { get; set; }
 
-        [MaxLength(25)]
         public string Name { get; set; }
 
-        public ICollection<Country> Countries { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }
