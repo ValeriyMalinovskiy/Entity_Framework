@@ -6,7 +6,7 @@ namespace Code_First_Homework.Models
 {
     public class Job
     {
-        [MaxLength(10),DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, MaxLength(10)]
         public string Id { get; set; }
 
         [MaxLength(35)]

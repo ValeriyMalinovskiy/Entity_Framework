@@ -6,7 +6,7 @@ namespace Code_First_Homework.Models
 {
     public class Country
     {
-        [StringLength(2),DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, StringLength(2)]
         public string Id { get; set; }
 
         [MaxLength(40)]

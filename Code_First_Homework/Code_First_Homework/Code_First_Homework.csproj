@@ -20,6 +20,12 @@
     <Compile Remove="Migrations\20200210230630_CompanyDb_v2.Designer.cs" />
     <Compile Remove="Migrations\20200210230754_CreateCompanyDB.cs" />
     <Compile Remove="Migrations\20200210230754_CreateCompanyDB.Designer.cs" />
+    <Compile Remove="Migrations\20200211100318_CreateCompanyDB.cs" />
+    <Compile Remove="Migrations\20200211100318_CreateCompanyDB.Designer.cs" />
+    <Compile Remove="Migrations\20200211100926_CreateCompanyDB.cs" />
+    <Compile Remove="Migrations\20200211100926_CreateCompanyDB.Designer.cs" />
+    <Compile Remove="Migrations\20200211102309_CreateCompanyDB.cs" />
+    <Compile Remove="Migrations\20200211102309_CreateCompanyDB.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
