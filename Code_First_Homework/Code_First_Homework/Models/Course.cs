@@ -12,6 +12,6 @@ namespace Code_First_Homework.Models
 
         public string Description { get; set; }
 
-        public IList<StudentCourse> StudentCourses { get; set; }
+        public virtual IList<StudentCourse> StudentCourses { get; set; }
     }
 }

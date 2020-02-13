@@ -10,12 +10,12 @@ namespace Code_First_Homework.Models
 
         public string Name { get; set; }
 
-        public Grade Grade { get; set; }
+        public virtual Grade Grade { get; set; }
 
         public int GradeId { get; set; }
 
-        public StudentAddress Address { get; set; }
+        public virtual StudentAddress Address { get; set; }
 
-        public ICollection<StudentCourse> StudentCourses { get; set; }
+        public virtual ICollection<StudentCourse> StudentCourses { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Code_First_Homework.Migrations
 {
-    public partial class CreateCourseCampDB : Migration
+    public partial class CreateCourseDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

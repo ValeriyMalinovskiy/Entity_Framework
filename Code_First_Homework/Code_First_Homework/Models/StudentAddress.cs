@@ -19,6 +19,6 @@ namespace Code_First_Homework.Models
         public int StudentId { get; set; }
 
         public int AddressOfStudentId { get; set; }
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

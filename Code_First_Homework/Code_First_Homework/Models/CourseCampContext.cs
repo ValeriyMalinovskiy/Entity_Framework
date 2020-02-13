@@ -15,9 +15,10 @@ namespace Code_First_Homework.Models
         public DbSet<StudentCourse> StudentCourses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Database=CourseCampDB;Trusted_Connection=True;");
-        }
+            => optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer(@"Database=CourseCampDB;Trusted_Connection=True;");
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,7 +33,7 @@ namespace Code_First_Homework.Models
                 .HasForeignKey<StudentAddress>(sa => sa.AddressOfStudentId);
 
             modelBuilder.Entity<StudentCourse>()
-                .HasKey(sc => new { sc.StudentId, sc.CourseId});
+                .HasKey(sc => new { sc.StudentId, sc.CourseId });
         }
     }
 }

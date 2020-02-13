@@ -10,6 +10,6 @@ namespace Code_First_Homework.Models
 
         public string Name { get; set; }
 
-        public ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }
