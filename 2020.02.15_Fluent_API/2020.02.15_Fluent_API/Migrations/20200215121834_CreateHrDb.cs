@@ -72,7 +72,7 @@ namespace _2020._02._15_Fluent_API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StreeAddress = table.Column<string>(nullable: true),
+                    StreetAddress = table.Column<string>(nullable: true),
                     CountryId = table.Column<string>(nullable: true),
                     PostalCode = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),

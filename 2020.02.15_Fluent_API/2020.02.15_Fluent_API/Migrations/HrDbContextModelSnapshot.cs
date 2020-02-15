@@ -186,7 +186,7 @@ namespace _2020._02._15_Fluent_API.Migrations
                     b.Property<string>("StateProvince")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreeAddress")
+                    b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

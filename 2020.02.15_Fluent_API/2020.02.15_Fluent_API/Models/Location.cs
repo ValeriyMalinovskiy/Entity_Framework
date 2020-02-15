@@ -8,7 +8,7 @@ namespace _2020._02._15_Fluent_API.Models
     {
         public int Id { get; set; }
 
-        public string StreeAddress { get; set; }
+        public string StreetAddress { get; set; }
 
         public Country Country { get; set; }
 
