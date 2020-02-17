@@ -22,9 +22,7 @@ namespace _2020._02._15_Fluent_API.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
               => optionsBuilder
-                //.UseLazyLoadingProxies()
                 .UseSqlServer(@"Database=HrDatabase;Trusted_Connection=True;");
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,7 +45,6 @@ namespace _2020._02._15_Fluent_API.Models
             modelBuilder.Entity<Job>()
                 .HasMany<JobHistory>(job => job.JobHistories)
                 .WithOne(jobhistory => jobhistory.Job);
-
 
             modelBuilder.Entity<Employee>()
                 .HasMany<JobHistory>(job => job.JobHistories)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace _2020._02._15_Fluent_API.Models
+﻿namespace _2020._02._15_Fluent_API.Models
 {
     public class JobGrade
     {
