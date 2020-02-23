@@ -12,6 +12,10 @@ namespace UniversityDAL.Models
 
         public virtual Department Department { get; set; }
 
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual List<Student> Students { get; set; }
+        public Course()
+        {
+            this.Students = new List<Student>();
+        }
     }
 }

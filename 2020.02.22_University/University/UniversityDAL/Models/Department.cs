@@ -10,6 +10,11 @@ namespace UniversityDAL.Models
 
         public string Name { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual List<Course> Courses { get; set; }
+
+        public Department()
+        {
+            this.Courses = new List<Course>();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace UniversityDAL.Migrations
+namespace University.DAL.Migrations
 {
     public partial class CreateUniversityDB : Migration
     {

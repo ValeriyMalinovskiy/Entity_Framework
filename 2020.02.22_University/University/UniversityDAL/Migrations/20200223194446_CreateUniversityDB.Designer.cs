@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniversityDAL.Models;
 
-namespace UniversityDAL.Migrations
+namespace University.DAL.Migrations
 {
     [DbContext(typeof(UniversityDbContext))]
-    [Migration("20200222095143_CreateUniversityDB")]
+    [Migration("20200223194446_CreateUniversityDB")]
     partial class CreateUniversityDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

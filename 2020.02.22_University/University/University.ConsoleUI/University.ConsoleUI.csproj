@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UniversityDAL\UniversityDAL.csproj" />
+    <ProjectReference Include="..\UniversityDAL\University.DAL.csproj" />
   </ItemGroup>
 
 </Project>
