@@ -24,7 +24,7 @@ namespace University.ConsoleUI
             }
         }
 
-        public void PerformDbOperation(UniversityEventArgs universityEvent)
+        public void PerformDbOperation(UniversityDbEventArgs universityEvent)
         {
             switch (universityEvent.Option)
             {
@@ -35,12 +35,15 @@ namespace University.ConsoleUI
                     break;
                 case UniversityDbOption.AddStudent:
                     {
-                        Console.WriteLine();
-                        unitOfWork.StudentRepository.Insert(new Student { FirstName = Console.ReadLine(), LastName = Console.ReadLine(), Course = GetCoursesList() });
+                        unitOfWork.StudentRepository.Insert(new Student{ FirstName = ui.EnterName("First Name", "Student"), LastName=ui.EnterName("Last Name", "Student"), Course = ui.SelectExistingCourse(unitOfWork) });
                         unitOfWork.Save();
                     }
                     break;
                 case UniversityDbOption.AddCourse:
+                    {
+                        unitOfWork.CourseRepository.Insert(new Course { Name = ui.EnterName("Name", "Course"), Department = ui.SelectExistingDepartment(unitOfWork)});
+                        unitOfWork.Save();
+                    }
                     break;
                 case UniversityDbOption.AddDepartment:
                     break;
@@ -61,18 +64,5 @@ namespace University.ConsoleUI
             }
         }
 
-        private Course GetCoursesList()
-        {
-            Console.Clear();
-            int counter = 1;
-            Course[] courses = this.unitOfWork.CourseRepository.GetEntities().ToArray();
-            foreach (var course in courses)
-            {
-                Console.WriteLine(counter + " " + course.Name);
-                counter++;
-            }
-            Console.WriteLine("Select Course");
-            return courses[Convert.ToInt32(Console.ReadLine()) - 1];
-        }
     }
 }

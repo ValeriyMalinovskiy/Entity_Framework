@@ -4,7 +4,7 @@ using System.Text;
 
 namespace University.ConsoleUI
 {
-    class UniversityEventArgs : EventArgs
+    class UniversityDbEventArgs : EventArgs
     {
         public UniversityDbOption Option { get; set; }
     }

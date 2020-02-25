@@ -6,11 +6,11 @@ using UniversityDAL.Models;
 
 namespace University.ConsoleUI
 {
-    internal delegate void OptionDelegate(UniversityEventArgs args);
+    internal delegate void OptionDelegate(UniversityDbEventArgs args);
 
     class ConsoleUI
     {
-        private readonly UniversityEventArgs universityEvent = new UniversityEventArgs();
+        private readonly UniversityDbEventArgs universityEvent = new UniversityDbEventArgs();
 
         public event OptionDelegate OptionSelected;
 
@@ -23,9 +23,9 @@ namespace University.ConsoleUI
             Console.WriteLine("5 - Delete Student");
             Console.WriteLine("6 - Delete Course");
             Console.WriteLine("7 - Delete Department");
-            Console.WriteLine("5 - Update Student");
-            Console.WriteLine("6 - Update Course");
-            Console.WriteLine("7 - Update Department");
+            Console.WriteLine("8 - Update Student");
+            Console.WriteLine("9 - Update Course");
+            Console.WriteLine("0 - Update Department");
             Console.WriteLine("ESC - Exit");
         }
 
@@ -33,25 +33,36 @@ namespace University.ConsoleUI
         {
             Console.Write(Environment.NewLine);
             List<Student> tempStudList = unitOfWork.StudentRepository.GetEntities();
-            String s = String.Format("{0,-10} {1,-10} {2,-10}\n\n", "First Name", "Last Name", "Course");
+            String s = String.Format("{0,-15} {1,-15} {2,-15}\n\n", "First Name", "Last Name", "Course");
             for (int index = 0; index < tempStudList.Count; index++)
-            //if (tempStudList[index].Course!=null)
-            {
-                s += String.Format("{0,-10} {1,-10} {2,-10}\n",
+                if (tempStudList[index].Course != null)
+                {
+                s += String.Format("{0,-15} {1,-15} {2,-15}\n",
                                    tempStudList[index].FirstName, tempStudList[index].LastName, tempStudList[index].Course.Name);
             }
             Console.WriteLine($"\n{s}");
 
             Console.Write(Environment.NewLine);
             List<Course> tempCourseList = unitOfWork.CourseRepository.GetEntities();
-            String crs = String.Format("{0,-10} {1,-10}\n\n", "Course Name", "Department");
+            String crs = String.Format("{0,-15} {1,-15}\n\n", "Course Name", "Department");
             for (int index = 0; index < tempCourseList.Count; index++)
-            //if (tempCourseList[index].Department!=null)
-            {
-                crs += String.Format("{0,-10} {1,-10}\n",
+                if (tempCourseList[index].Department != null)
+                {
+                crs += String.Format("{0,-15} {1,-15}\n",
                                    tempCourseList[index].Name, tempCourseList[index].Department.Name);
             }
             Console.WriteLine($"\n{crs}");
+
+            Console.Write(Environment.NewLine);
+            List<Department> tempDepartmentList = unitOfWork.DepartmentRepository.GetEntities();
+            String dpts = String.Format("{0,-15} \n\n", "Department Name");
+            for (int index = 0; index < tempDepartmentList.Count; index++)
+            //if (tempCourseList[index].Department!=null)
+            {
+                dpts += String.Format("{0,-15} \n",
+                                   tempDepartmentList[index].Name);
+            }
+            Console.WriteLine($"\n{dpts}");
         }
 
         public virtual void OnOptionSelected(UniversityDbOption option)
@@ -76,37 +87,42 @@ namespace University.ConsoleUI
                     break;
                 case ConsoleKey.NumPad3:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.AddCourse);
                     }
                     break;
                 case ConsoleKey.NumPad4:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.AddDepartment);
                     }
                     break;
                 case ConsoleKey.NumPad5:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.DeleteStudent);
                     }
                     break;
                 case ConsoleKey.NumPad6:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.DeleteCourse);
                     }
                     break;
                 case ConsoleKey.NumPad7:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.DeleteDepartment);
                     }
                     break;
                 case ConsoleKey.NumPad8:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.UpdateStudent);
                     }
                     break;
                 case ConsoleKey.NumPad9:
                     {
-                        this.OnOptionSelected(UniversityDbOption.ShowAll);
+                        this.OnOptionSelected(UniversityDbOption.UpdateCourse);
+                    }
+                    break;
+                case ConsoleKey.NumPad0:
+                    {
+                        this.OnOptionSelected(UniversityDbOption.UpdateDepartment);
                     }
                     break;
                 case ConsoleKey.Escape:
@@ -116,6 +132,39 @@ namespace University.ConsoleUI
                     break;
             }
         }
+        public Course SelectExistingCourse(UnitOfWork unitOfWork)
+        {
+            Console.Write(Environment.NewLine);
+            int counter = 1;
+            Course[] courses = unitOfWork.CourseRepository.GetEntities().ToArray();
+            foreach (var course in courses)
+            {
+                Console.WriteLine(counter + " " + course.Name);
+                counter++;
+            }
+            Console.WriteLine("Select Course");
+            return courses[Convert.ToInt32(Console.ReadLine()) - 1];
+        }
 
+        public Department SelectExistingDepartment(UnitOfWork unitOfWork)
+        {
+            Console.Write(Environment.NewLine);
+            int counter = 1;
+            Department[] departments = unitOfWork.DepartmentRepository.GetEntities().ToArray();
+            foreach (var department in departments)
+            {
+                Console.WriteLine(counter + " " + department.Name);
+                counter++;
+            }
+            Console.WriteLine("Select Department");
+            return departments[Convert.ToInt32(Console.ReadLine()) - 1];
+        }
+
+        public string EnterName(string name, string entityType)
+        {
+            Console.Write(Environment.NewLine);
+            Console.WriteLine($"Enter {entityType} {name}");
+            return Console.ReadLine();
+        }
     }
 }
