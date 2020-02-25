@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20200223190508_CreateUniversityDB.Designer.cs" />
     <Compile Remove="Migrations\20200223193059_CreateUniversityDB.cs" />
     <Compile Remove="Migrations\20200223193059_CreateUniversityDB.Designer.cs" />
+    <Compile Remove="Migrations\20200223194446_CreateUniversityDB.cs" />
+    <Compile Remove="Migrations\20200223194446_CreateUniversityDB.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

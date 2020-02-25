@@ -14,8 +14,8 @@ namespace UniversityDAL.Models
         public DbSet<Department> Departments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Database=UniversityDB;Trusted_Connection=True;");
-        }
+        => optionsBuilder
+            .UseLazyLoadingProxies()
+            .UseSqlServer(@"Database=UniversityDB;Trusted_Connection=True;");
     }
 }

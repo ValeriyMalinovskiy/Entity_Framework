@@ -12,6 +12,11 @@ namespace UniversityDAL
         private GenericRepository<Course> courseRepository;
         private bool disposed = false;
 
+        public UnitOfWork()
+        {
+            this.context.UpdateRange();
+        }
+
         public GenericRepository<Department> DepartmentRepository
         {
             get
