@@ -16,4 +16,10 @@
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="FileStore">
+      <HintPath>Model\FileStore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

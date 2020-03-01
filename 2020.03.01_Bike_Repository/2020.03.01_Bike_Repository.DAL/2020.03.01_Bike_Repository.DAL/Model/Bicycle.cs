@@ -1,4 +1,4 @@
-﻿using _2020._03._01_Bike_Repository.DAL.Model.Enums.BicycleStore.Model.Enums;
+﻿using _2020._03._01_Bike_Repository.DAL.Model.Enums;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
 

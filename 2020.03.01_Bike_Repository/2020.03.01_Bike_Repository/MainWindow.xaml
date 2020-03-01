@@ -4,10 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:_2020._03._01_Bike_Repository"
+    xmlns:view="clr-namespace:_2020._03._01_Bike_Repository.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid />
+    <view:BicycleStoreView></view:BicycleStoreView>
 </Window>

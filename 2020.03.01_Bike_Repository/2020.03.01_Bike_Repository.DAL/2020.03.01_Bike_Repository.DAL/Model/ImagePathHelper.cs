@@ -27,8 +27,8 @@ namespace _2020._03._01_Bike_Repository.DAL.Model
 
         public BitmapImage GetImageByModel(string model)
         {
-            ResourceManager MyResourceClass = new ResourceManager(typeof(Resource));
-            ResourceSet resourceSet = Resource.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+            ResourceManager MyResourceClass = new ResourceManager(typeof(FileStore.Resource));
+            ResourceSet resourceSet = FileStore.Resource.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
             foreach (DictionaryEntry entry in resourceSet)
             {
                 model = model.Replace(' ', '_');
@@ -38,7 +38,7 @@ namespace _2020._03._01_Bike_Repository.DAL.Model
                     return ConvertBitmapToImage(entry.Value as Bitmap);
                 }
             }
-            return this.ConvertBitmapToImage(Resource.no_image_found);
+            return ConvertBitmapToImage(FileStore.Resource.no_image_found);
         }
     }
 }
