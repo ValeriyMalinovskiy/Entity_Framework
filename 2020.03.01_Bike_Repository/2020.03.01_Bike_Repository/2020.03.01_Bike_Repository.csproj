@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>_2020._03._01_Bike_Repository</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\2020.03.01_Bike_Repository.DAL\2020.03.01_Bike_Repository.DAL\2020.03.01_Bike_Repository.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
