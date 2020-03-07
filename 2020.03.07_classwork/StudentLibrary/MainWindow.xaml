@@ -5,10 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:StudentLibrary.View"
         mc:Ignorable="d"
-        Height="430"
-        Width="700"
-        Title="MainWindow">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-         <view:StudentView HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <view:StudentView />
     </Grid>
 </Window>

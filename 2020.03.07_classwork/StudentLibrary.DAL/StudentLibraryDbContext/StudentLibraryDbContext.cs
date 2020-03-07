@@ -10,6 +10,10 @@ namespace StudentLibrary.DAL.StudentLibraryDbContext
     {
         public DbSet<Student> Students { get; set; }
 
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Book> Books { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Database=StudentLibraryDb;Trusted_Connection=True;");

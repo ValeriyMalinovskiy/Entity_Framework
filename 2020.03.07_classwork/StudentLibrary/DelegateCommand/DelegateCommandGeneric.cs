@@ -1,18 +1,18 @@
-using System;
+﻿using System;
 using System.Windows.Input;
 
 namespace StudentLibrary.DelegateCommand
 {
-    public class DelegateCommand : ICommand
+    public class DelegateCommand<T> : ICommand
     {
-        private readonly Action execute;
-        private readonly Func<bool> canExecute;
+        private readonly Action<T> execute;
+        private readonly Func<T, bool> canExecute;
 
-        public DelegateCommand(Action execute) : this(execute, null)
+        public DelegateCommand(Action<T> execute) : this(execute, null)
         {
         }
 
-        public DelegateCommand(Action execute, Func<bool> canExecute)
+        public DelegateCommand(Action<T> execute, Func<T, bool> canExecute)
         {
             if (execute == null) throw new ArgumentNullException(nameof(execute));
 
@@ -22,12 +22,12 @@ namespace StudentLibrary.DelegateCommand
 
         public bool CanExecute(object parameter)
         {
-            return canExecute?.Invoke() ?? true;
+            return this.canExecute?.Invoke((T)parameter) ?? true;
         }
 
         public void Execute(object parameter)
         {
-            execute();
+            this.execute((T)parameter);
         }
 
         public event EventHandler CanExecuteChanged

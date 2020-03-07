@@ -51,7 +51,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left">
             <Label Content="Name"/>
-            <TextBox Text="{Binding SelectedStudent.Name}"/>
+            <TextBox Text="{Binding SelectedStudent.FirstName}"/>
             <Label Content="Email"/>
             <TextBox Text="{Binding SelectedStudent.Email}"/>
             <Button Content="Save Changes" Command="{Binding SaveStudentsCommand}"/>
