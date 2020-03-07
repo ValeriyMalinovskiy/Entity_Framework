@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StudentLibrary.DAL.Model
+﻿namespace StudentLibrary.DAL.Model
 {
     public class Book
     {
-        public string Titile { get; set; }
+        public virtual int Id { get; set; }
 
-        public string Author { get; set; }
+        public virtual string Titile { get; set; }
 
-        public int Year { get; set; }
+        public virtual string Author { get; set; }
+
+        public virtual int Year { get; set; }
+
+        public virtual int StudentId { get; set; }
+
+        public virtual Student Student { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace StudentLibraryStudentLibrary.ViewModel
             this.Students = new ObservableCollection<Student>();
 
             this.GetStudentsCommmand = new DelegateCommand(ExecuteGetStudents);
-            this.SaveStudentsCommand = new DelegateCommand(ExecuteSaveStudents, CanExecuteSaveStudents);
+            this.SaveChangesCommand = new DelegateCommand(ExecuteSaveChanges, CanExecuteSaveStudents);
         }
 
         private bool CanExecuteSaveStudents()
@@ -30,9 +30,9 @@ namespace StudentLibraryStudentLibrary.ViewModel
             return this.selectedStudent != null;
         }
 
-        private void ExecuteSaveStudents()
+        private void ExecuteSaveChanges()
         {
-            this.studentService.SaveStudents(this.Students);
+            this.studentService.SaveChanges();
         }
 
         private void ExecuteGetStudents()
@@ -62,7 +62,7 @@ namespace StudentLibraryStudentLibrary.ViewModel
 
         public DelegateCommand GetStudentsCommmand { get; }
 
-        public DelegateCommand SaveStudentsCommand { get; }
+        public DelegateCommand SaveChangesCommand { get; }
 
     }
 }

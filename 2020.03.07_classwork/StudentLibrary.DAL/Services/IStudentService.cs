@@ -6,6 +6,9 @@ namespace StudentLibrary.DAL.Services
     public interface IStudentService
     {
         IEnumerable<Student> GetStudents();
-        void SaveStudents(IEnumerable<Student> students);
+
+        void SaveChanges();
+
+        void RemoveStudent(Student student);
     }
 }

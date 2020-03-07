@@ -6,7 +6,7 @@
              DataContext="{Binding StudentViewModel, Source={StaticResource Locator}}"
              mc:Ignorable="d" 
              
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="500">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Margin" Value="0,5,0,0"/>
@@ -31,6 +31,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" HorizontalAlignment="Left">
             <Label Content="Students:"/>
@@ -50,12 +51,22 @@
             <Button Content="Get Students" Command="{Binding GetStudentsCommmand}" />
         </StackPanel>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left">
-            <Label Content="Name"/>
+            <Label Content="First Name"/>
             <TextBox Text="{Binding SelectedStudent.FirstName}"/>
+            <Label Content="Last Name"/>
+            <TextBox Text="{Binding SelectedStudent.LastName}"/>
+            <Label Content="Date of birth"/>
+            <TextBox Text="{Binding SelectedStudent.DateOfBirth}"/>
+            <Label Content="Entrance date"/>
+            <TextBox Text="{Binding SelectedStudent.EntranceDate}"/>
             <Label Content="Email"/>
             <TextBox Text="{Binding SelectedStudent.Email}"/>
+            <Label Content="Phone"/>
+            <TextBox Text="{Binding SelectedStudent.PhoneNumber}"/>
+            <Label Content="Address"/>
+            <TextBox Text="{Binding SelectedStudent.Address}"/>
             <Button Content="Save Changes" Command="{Binding SaveStudentsCommand}"/>
         </StackPanel>
-
+        <ListView Grid.Column="2" ItemsSource="{Binding SelectedStudent.Books}"></ListView>
     </Grid>
 </UserControl>
