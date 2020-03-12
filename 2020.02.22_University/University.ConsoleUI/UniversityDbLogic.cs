@@ -6,7 +6,9 @@ namespace University.ConsoleUI
     internal class UniversityDbLogic
     {
         private readonly bool exit = false;
+
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
+
         private readonly ConsoleUI ui = new ConsoleUI();
 
         public void UtilizeUniversityDb()
@@ -89,7 +91,7 @@ namespace University.ConsoleUI
                 case UniversityDbOption.UpdateCourse:
                     {
                         var tempCourse = this.ui.SelectExistingCourse(this.unitOfWork);
-                        tempCourse.Name  = this.ui.EnterName("New Name", "Course");
+                        tempCourse.Name = this.ui.EnterName("New Name", "Course");
                         tempCourse.Department = this.ui.SelectExistingDepartment(this.unitOfWork);
                         this.unitOfWork.CourseRepository.Update(tempCourse);
                     }
