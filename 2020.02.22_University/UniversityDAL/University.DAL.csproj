@@ -5,19 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200222090726_CreateUniversityDB.cs" />
-    <Compile Remove="Migrations\20200222090726_CreateUniversityDB.Designer.cs" />
-    <Compile Remove="Migrations\20200222095143_CreateUniversityDB.cs" />
-    <Compile Remove="Migrations\20200222095143_CreateUniversityDB.Designer.cs" />
-    <Compile Remove="Migrations\20200223190508_CreateUniversityDB.cs" />
-    <Compile Remove="Migrations\20200223190508_CreateUniversityDB.Designer.cs" />
-    <Compile Remove="Migrations\20200223193059_CreateUniversityDB.cs" />
-    <Compile Remove="Migrations\20200223193059_CreateUniversityDB.Designer.cs" />
-    <Compile Remove="Migrations\20200223194446_CreateUniversityDB.cs" />
-    <Compile Remove="Migrations\20200223194446_CreateUniversityDB.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="DbContext\" />
   </ItemGroup>
 

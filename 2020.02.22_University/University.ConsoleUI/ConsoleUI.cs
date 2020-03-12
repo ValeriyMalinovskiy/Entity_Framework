@@ -7,7 +7,7 @@ namespace University.ConsoleUI
 {
     internal delegate void OptionDelegate(UniversityDbEventArgs args);
 
-    class ConsoleUI
+    internal class ConsoleUI
     {
         private readonly UniversityDbEventArgs universityEvent = new UniversityDbEventArgs();
 

@@ -2,7 +2,7 @@
 
 namespace University.DAL.Migrations
 {
-    public partial class CreateUniversityDB : Migration
+    public partial class CreateUniversityDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

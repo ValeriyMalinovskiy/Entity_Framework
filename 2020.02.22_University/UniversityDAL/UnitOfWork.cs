@@ -6,7 +6,7 @@ namespace UniversityDAL
 {
     public class UnitOfWork : IDisposable
     {
-        private UniversityDbContext context = new UniversityDbContext();
+        private readonly UniversityDbContext context = new UniversityDbContext();
         private GenericRepository<Department> departmentRepository;
         private GenericRepository<Student> studentRepository;
         private GenericRepository<Course> courseRepository;
@@ -21,11 +21,11 @@ namespace UniversityDAL
         {
             get
             {
-                if (departmentRepository == null)
+                if (this.departmentRepository == null)
                 {
-                    departmentRepository = new GenericRepository<Department>(context);
+                    this.departmentRepository = new GenericRepository<Department>(this.context);
                 }
-                return departmentRepository;
+                return this.departmentRepository;
             }
         }
 
@@ -33,11 +33,11 @@ namespace UniversityDAL
         {
             get
             {
-                if (studentRepository == null)
+                if (this.studentRepository == null)
                 {
-                    studentRepository = new GenericRepository<Student>(context);
+                    this.studentRepository = new GenericRepository<Student>(this.context);
                 }
-                return studentRepository;
+                return this.studentRepository;
             }
         }
 
@@ -45,29 +45,29 @@ namespace UniversityDAL
         {
             get
             {
-                if (courseRepository == null)
+                if (this.courseRepository == null)
                 {
-                    courseRepository = new GenericRepository<Course>(context);
+                    this.courseRepository = new GenericRepository<Course>(this.context);
                 }
-                return courseRepository;
+                return this.courseRepository;
             }
         }
 
         public void Save()
         {
-            context.SaveChanges();
+            this.context.SaveChanges();
         }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!this.disposed)
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    this.context.Dispose();
                 }
             }
-            disposed = true;
+            this.disposed = true;
         }
 
         public void Dispose()

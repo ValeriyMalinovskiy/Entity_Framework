@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using UniversityDAL.Models;
 
 namespace UniversityDAL.Repositories
 {
-    interface IStudentRepository : IDisposable
+    internal interface IStudentRepository : IDisposable
     {
         IEnumerable<Student> GetStudents();
 

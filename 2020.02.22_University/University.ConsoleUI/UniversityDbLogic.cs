@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UniversityDAL;
+﻿using UniversityDAL;
 using UniversityDAL.Models;
 
 namespace University.ConsoleUI
 {
-    class UniversityDbLogic
+    internal class UniversityDbLogic
     {
-        //var firstTimeLaunch = new FirstTimeLaunch();
-        //UnitOfWork unitOfWork = firstTimeLaunch.GenerateFirstEntries();
-        bool exit = false;
-        UnitOfWork unitOfWork = new UnitOfWork();
-        ConsoleUI ui = new ConsoleUI();
+        private readonly bool exit = false;
+        private readonly UnitOfWork unitOfWork = new UnitOfWork();
+        private readonly ConsoleUI ui = new ConsoleUI();
 
         public void UtilizeUniversityDb()
         {
-            ui.OptionSelected += PerformDbOperation;
-            while (!exit)
+            //
+            //Uncomment for the first time launch after DB creaation
+            //
+            //var firstTimeLaunch = new FirstTimeLaunch();
+            //UnitOfWork unitOfWork = firstTimeLaunch.GenerateFirstEntries();
+
+            this.ui.OptionSelected += PerformDbOperation;
+            while (!this.exit)
             {
-                ui.ShowDialog();
-                ui.ProcessUserInput();
+                this.ui.ShowDialog();
+                this.ui.ProcessUserInput();
             }
         }
 
@@ -30,19 +31,19 @@ namespace University.ConsoleUI
             {
                 case UniversityDbOption.ShowAll:
                     {
-                        ui.ShowAll(this.unitOfWork);
+                        this.ui.ShowAll(this.unitOfWork);
                     }
                     break;
                 case UniversityDbOption.AddStudent:
                     {
-                        unitOfWork.StudentRepository.Insert(new Student{ FirstName = ui.EnterName("First Name", "Student"), LastName=ui.EnterName("Last Name", "Student"), Course = ui.SelectExistingCourse(unitOfWork) });
-                        unitOfWork.Save();
+                        this.unitOfWork.StudentRepository.Insert(new Student { FirstName = this.ui.EnterName("First Name", "Student"), LastName = this.ui.EnterName("Last Name", "Student"), Course = this.ui.SelectExistingCourse(this.unitOfWork) });
+                        this.unitOfWork.Save();
                     }
                     break;
                 case UniversityDbOption.AddCourse:
                     {
-                        unitOfWork.CourseRepository.Insert(new Course { Name = ui.EnterName("Name", "Course"), Department = ui.SelectExistingDepartment(unitOfWork)});
-                        unitOfWork.Save();
+                        this.unitOfWork.CourseRepository.Insert(new Course { Name = this.ui.EnterName("Name", "Course"), Department = this.ui.SelectExistingDepartment(this.unitOfWork) });
+                        this.unitOfWork.Save();
                     }
                     break;
                 case UniversityDbOption.AddDepartment:

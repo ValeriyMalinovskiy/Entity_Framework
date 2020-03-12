@@ -15,7 +15,7 @@ namespace UniversityDAL.Repositories
         public GenericRepository(UniversityDbContext context)
         {
             this.context = context;
-            dbSet = context.Set<TEntity>();
+            this.dbSet = context.Set<TEntity>();
         }
 
         public virtual IEnumerable<TEntity> Get(
@@ -23,7 +23,7 @@ namespace UniversityDAL.Repositories
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable<TEntity> query = dbSet;
+            IQueryable<TEntity> query = this.dbSet;
             if (filter != null)
             {
                 query = query.Where(filter);
@@ -45,33 +45,33 @@ namespace UniversityDAL.Repositories
 
         public virtual TEntity GetById(object id)
         {
-            return dbSet.Find(id);
+            return this.dbSet.Find(id);
         }
 
         public virtual void Insert(TEntity entity)
         {
-            dbSet.Add(entity);
+            this.dbSet.Add(entity);
         }
 
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = dbSet.Find(id);
+            TEntity entityToDelete = this.dbSet.Find(id);
             Delete(entityToDelete);
         }
 
         public virtual void Delete(TEntity entityToDelete)
         {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
+            if (this.context.Entry(entityToDelete).State == EntityState.Detached)
             {
-                dbSet.Attach(entityToDelete);
+                this.dbSet.Attach(entityToDelete);
             }
-            dbSet.Remove(entityToDelete);
+            this.dbSet.Remove(entityToDelete);
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            this.dbSet.Attach(entityToUpdate);
+            this.context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
         public List<TEntity> GetEntities()

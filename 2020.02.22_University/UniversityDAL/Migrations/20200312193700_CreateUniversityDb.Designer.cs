@@ -10,8 +10,8 @@ using UniversityDAL.Models;
 namespace University.DAL.Migrations
 {
     [DbContext(typeof(UniversityDbContext))]
-    [Migration("20200224210606_CreateUniversityDB")]
-    partial class CreateUniversityDB
+    [Migration("20200312193700_CreateUniversityDb")]
+    partial class CreateUniversityDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

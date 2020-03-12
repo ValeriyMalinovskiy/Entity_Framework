@@ -2,14 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UniversityDAL.Models;
 
 namespace UniversityDAL.Repositories
 {
     public class StudentRepository : IDisposable, IStudentRepository
     {
-        private UniversityDbContext context;
+        private readonly UniversityDbContext context;
         private bool disposed = false;
 
         public StudentRepository(UniversityDbContext context)
@@ -18,8 +17,8 @@ namespace UniversityDAL.Repositories
         }
         public void DeleteStudent(int studentId)
         {
-            Student student = context.Students.Find(studentId);
-            context.Students.Remove(student);
+            Student student = this.context.Students.Find(studentId);
+            this.context.Students.Remove(student);
         }
 
         protected virtual void Dispose(bool disposing)
@@ -28,7 +27,7 @@ namespace UniversityDAL.Repositories
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    this.context.Dispose();
                 }
             }
             this.disposed = true;
@@ -36,7 +35,7 @@ namespace UniversityDAL.Repositories
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -57,12 +56,12 @@ namespace UniversityDAL.Repositories
 
         public void Save()
         {
-            context.SaveChanges();
+            this.context.SaveChanges();
         }
 
         public void UpdateStudent(Student student)
         {
-            context.Entry(student).State = EntityState.Modified;
+            this.context.Entry(student).State = EntityState.Modified;
         }
     }
 }

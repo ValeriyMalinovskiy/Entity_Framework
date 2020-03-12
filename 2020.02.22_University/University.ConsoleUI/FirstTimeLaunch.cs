@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using UniversityDAL;
 using UniversityDAL.Models;
-using UniversityDAL;
-using UniversityDAL.Repositories;
 
 namespace University.ConsoleUI
 {
-    class FirstTimeLaunch
+    internal class FirstTimeLaunch
     {
         public UnitOfWork GenerateFirstEntries()
         {
