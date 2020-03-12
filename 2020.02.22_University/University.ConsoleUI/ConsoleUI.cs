@@ -15,6 +15,7 @@ namespace University.ConsoleUI
 
         public void ShowDialog()
         {
+            Console.WriteLine("Please use NUM keys:");
             Console.WriteLine("1 - View the list of all entities and properties");
             Console.WriteLine("2 - Add new Student");
             Console.WriteLine("3 - Add new Course");
@@ -36,8 +37,7 @@ namespace University.ConsoleUI
             for (int index = 0; index < tempStudList.Count; index++)
                 if (tempStudList[index].Course != null)
                 {
-                    s += String.Format("{0,-15} {1,-15} {2,-15}\n",
-                                       tempStudList[index].FirstName, tempStudList[index].LastName, tempStudList[index].Course.Name);
+                    s += String.Format("{0,-15} {1,-15} {2,-15}\n", tempStudList[index].FirstName, tempStudList[index].LastName, tempStudList[index].Course.Name);
                 }
             Console.WriteLine($"\n{s}");
 
@@ -47,19 +47,15 @@ namespace University.ConsoleUI
             for (int index = 0; index < tempCourseList.Count; index++)
                 if (tempCourseList[index].Department != null)
                 {
-                    crs += String.Format("{0,-15} {1,-15}\n",
-                                       tempCourseList[index].Name, tempCourseList[index].Department.Name);
+                    crs += String.Format("{0,-15} {1,-15}\n", tempCourseList[index].Name, tempCourseList[index].Department.Name);
                 }
             Console.WriteLine($"\n{crs}");
-
             Console.Write(Environment.NewLine);
             List<Department> tempDepartmentList = unitOfWork.DepartmentRepository.GetEntities();
             String dpts = String.Format("{0,-15} \n\n", "Department Name");
             for (int index = 0; index < tempDepartmentList.Count; index++)
-            //if (tempCourseList[index].Department!=null)
             {
-                dpts += String.Format("{0,-15} \n",
-                                   tempDepartmentList[index].Name);
+                dpts += String.Format("{0,-15} \n", tempDepartmentList[index].Name);
             }
             Console.WriteLine($"\n{dpts}");
         }
@@ -158,6 +154,21 @@ namespace University.ConsoleUI
             Console.WriteLine("Select Department");
             return departments[Convert.ToInt32(Console.ReadLine()) - 1];
         }
+
+        public Student SelectExistingStudent(UnitOfWork unitOfWork)
+        {
+            Console.Write(Environment.NewLine);
+            int counter = 1;
+            Student[] students = unitOfWork.StudentRepository.GetEntities().ToArray();
+            foreach (var student in students)
+            {
+                Console.WriteLine(counter + " " + student);
+                counter++;
+            }
+            Console.WriteLine("Select Student");
+            return students[Convert.ToInt32(Console.ReadLine()) - 1];
+        }
+
 
         public string EnterName(string name, string entityType)
         {
