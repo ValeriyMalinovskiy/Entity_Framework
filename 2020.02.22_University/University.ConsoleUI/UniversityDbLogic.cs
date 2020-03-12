@@ -5,8 +5,6 @@ namespace University.ConsoleUI
 {
     internal class UniversityDbLogic
     {
-        private readonly bool exit = false;
-
         private readonly UnitOfWork unitOfWork = new UnitOfWork();
 
         private readonly ConsoleUI ui = new ConsoleUI();
@@ -20,7 +18,7 @@ namespace University.ConsoleUI
             //UnitOfWork unitOfWork = firstTimeLaunch.GenerateFirstEntries();
 
             this.ui.OptionSelected += PerformDbOperation;
-            while (!this.exit)
+            while (true)
             {
                 this.ui.ShowDialog();
                 this.ui.ProcessUserInput();
