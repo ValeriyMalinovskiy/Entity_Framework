@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MyCrmModel.Sales
 {
-    class Customer
+    internal class Customer
     {
         public int Id { get; set; }
 

@@ -10,19 +10,19 @@ namespace MyCrmModel
         public DbSet<Brand> Brands { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-        
+
         public DbSet<Product> Products { get; set; }
-        
+
         public DbSet<Stock> Stocks { get; set; }
-        
+
         public DbSet<Customer> Customers { get; set; }
-        
+
         public DbSet<Order> Orders { get; set; }
-        
+
         public DbSet<OrderItem> OrderItems { get; set; }
-        
+
         public DbSet<Staff> Staffs { get; set; }
-        
+
         public DbSet<Store> Stores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -125,13 +125,11 @@ namespace MyCrmModel
                 Id = 1,
                 Name = "Food",
             };
-
             Brand brand1 = new Brand
             {
                 Id = 1,
                 Name = "Bounty",
             };
-
             Order order1 = new Order
             {
                 Id = 1,
@@ -149,20 +147,17 @@ namespace MyCrmModel
                 Discount = 0,
                 ItemId = 1,
                 ListPrice = 12,
-                OrderId =1,
+                OrderId = 1,
                 ProductId = 1,
                 Quantity = 10
             };
-
             Stock stock1 = new Stock
             {
                 ProductId = 1,
                 Quantity = 100000,
                 StoreId = 1
             };
-
             Stock[] stocks = { stock1 };
-
             Product product1 = new Product
             {
                 Id = 1,
@@ -172,12 +167,8 @@ namespace MyCrmModel
                 BrandId = 1,
                 CategoryId = 1,
             };
-
             Order[] orders = { order1 };
-
-
             OrderItem[] orderItems = { orderItem1 };
-
             Store store1 = new Store
             {
                 Email = "beststore@gmail.com",
@@ -189,7 +180,6 @@ namespace MyCrmModel
                 ZipCode = 90291,
                 Id = 1,
             };
-
             Staff staff1 = new Staff
             {
                 Id = 1,
@@ -201,7 +191,6 @@ namespace MyCrmModel
                 Phone = "1234456790",
                 StoreId = 1,
             };
-
             Customer customer1 = new Customer
             {
                 Id = 1,

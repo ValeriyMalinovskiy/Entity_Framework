@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MyCrmModel.Sales
 {
-    class Order
+    internal class Order
     {
         public int Id { get; set; }
 

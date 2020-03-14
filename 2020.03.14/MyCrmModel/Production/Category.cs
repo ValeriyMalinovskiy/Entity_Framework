@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MyCrmModel.Production
 {
-    class Category
+    internal class Category
     {
         public int Id { get; set; }
 
