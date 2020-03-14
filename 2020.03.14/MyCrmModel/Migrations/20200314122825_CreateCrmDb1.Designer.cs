@@ -10,8 +10,8 @@ using MyCrmModel;
 namespace MyCrmModel.Migrations
 {
     [DbContext(typeof(MyCrmDbContext))]
-    [Migration("20200314113646_CreateCrmDb")]
-    partial class CreateCrmDb
+    [Migration("20200314122825_CreateCrmDb1")]
+    partial class CreateCrmDb1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -206,25 +206,35 @@ namespace MyCrmModel.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnName("staff_id")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Active")
+                        .HasColumnName("active")
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
+                        .HasColumnName("email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .HasColumnName("first_name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .HasColumnName("last_name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ManagerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Phone")
+                        .HasColumnName("phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StoreId")
+                    b.Property<int>("StoreId")
+                        .HasColumnName("store_id")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -311,10 +321,10 @@ namespace MyCrmModel.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyCrmModel.Sales.Store", null)
+                    b.HasOne("MyCrmModel.Sales.Store", "Store")
                         .WithMany("Orders")
                         .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 
@@ -337,7 +347,9 @@ namespace MyCrmModel.Migrations
                 {
                     b.HasOne("MyCrmModel.Sales.Store", "Store")
                         .WithMany()
-                        .HasForeignKey("StoreId");
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

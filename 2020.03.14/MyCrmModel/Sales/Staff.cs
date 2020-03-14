@@ -22,6 +22,8 @@ namespace MyCrmModel.Sales
 
         public Store Store { get; set; }
 
+        public int StoreId { get; set; }
+
         public int ManagerId { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyCrmModel.Migrations
 {
-    public partial class CreateCrmDb : Migration
+    public partial class CreateCrmDb1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -105,24 +105,25 @@ namespace MyCrmModel.Migrations
                 name: "Staffs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    staff_id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Active = table.Column<bool>(nullable: false),
-                    StoreId = table.Column<int>(nullable: true)
+                    first_name = table.Column<string>(nullable: true),
+                    last_name = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    phone = table.Column<string>(nullable: true),
+                    active = table.Column<bool>(nullable: false),
+                    store_id = table.Column<int>(nullable: false),
+                    ManagerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Staffs", x => x.Id);
+                    table.PrimaryKey("PK_Staffs", x => x.staff_id);
                     table.ForeignKey(
-                        name: "FK_Staffs_Stores_StoreId",
-                        column: x => x.StoreId,
+                        name: "FK_Staffs_Stores_store_id",
+                        column: x => x.store_id,
                         principalTable: "Stores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,14 +178,13 @@ namespace MyCrmModel.Migrations
                         name: "FK_Orders_Staffs_StaffId",
                         column: x => x.StaffId,
                         principalTable: "Staffs",
-                        principalColumn: "Id",
+                        principalColumn: "staff_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_Stores_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Stores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -246,9 +246,9 @@ namespace MyCrmModel.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Staffs_StoreId",
+                name: "IX_Staffs_store_id",
                 table: "Staffs",
-                column: "StoreId");
+                column: "store_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Stocks_ProductId",

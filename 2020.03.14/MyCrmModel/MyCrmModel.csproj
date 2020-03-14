@@ -8,6 +8,14 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200314113309_CreateCrmDb.cs" />
     <Compile Remove="Migrations\20200314113309_CreateCrmDb.Designer.cs" />
+    <Compile Remove="Migrations\20200314121431_CreateCrmDb1.cs" />
+    <Compile Remove="Migrations\20200314121431_CreateCrmDb1.Designer.cs" />
+    <Compile Remove="Migrations\20200314121723_CreateCrmDb1.cs" />
+    <Compile Remove="Migrations\20200314121723_CreateCrmDb1.Designer.cs" />
+    <Compile Remove="Migrations\20200314121842_CreateCrmDb1.cs" />
+    <Compile Remove="Migrations\20200314121842_CreateCrmDb1.Designer.cs" />
+    <Compile Remove="Migrations\20200314122539_CreateCrmDb1.cs" />
+    <Compile Remove="Migrations\20200314122539_CreateCrmDb1.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
