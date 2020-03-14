@@ -1,8 +1,5 @@
 ﻿using _2020._03._01_Bike_Repository.DAL.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _2020._03._01_Bike_Repository.DAL.Db_Context
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace _2020._03._01_Bike_Repository.Command
+﻿namespace _2020._03._01_Bike_Repository.Command
 {
     using System;
     using System.Windows.Input;
@@ -43,19 +39,19 @@ namespace _2020._03._01_Bike_Repository.Command
                 add
                 {
                     CommandManager.RequerySuggested += value;
-                    this.CanExecuteChangedInternal += value;
+                    CanExecuteChangedInternal += value;
                 }
 
                 remove
                 {
                     CommandManager.RequerySuggested -= value;
-                    this.CanExecuteChangedInternal -= value;
+                    CanExecuteChangedInternal -= value;
                 }
             }
 
             public void OnCanExecuteChanged()
             {
-                EventHandler handler = this.CanExecuteChangedInternal;
+                EventHandler handler = CanExecuteChangedInternal;
                 if (handler != null)
                 {
                     handler.Invoke(this, EventArgs.Empty);

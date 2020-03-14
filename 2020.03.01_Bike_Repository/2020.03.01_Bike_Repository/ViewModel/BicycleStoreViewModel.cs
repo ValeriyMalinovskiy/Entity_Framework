@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace _2020._03._01_Bike_Repository.ViewModel
 {
-    class BicycleShopViewModel : INotifyPropertyChanged
+    internal class BicycleStoreViewModel : INotifyPropertyChanged
     {
         private Bicycle selectedBicycle;
 
@@ -19,7 +19,7 @@ namespace _2020._03._01_Bike_Repository.ViewModel
 
         public ICommand SetDefaultsCommand { get; set; }
 
-        public BicycleShopViewModel()
+        public BicycleStoreViewModel()
         {
             this.bicycleCollection = new ObservableCollection<Bicycle>{
                  new Bicycle ( "Pride", "Donut 6.2", 300, Country.Ukraine, FrameSize.XL, 2019 ),

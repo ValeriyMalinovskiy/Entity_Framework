@@ -20,7 +20,6 @@ namespace _2020._03._01_Bike_Repository.DAL.Model
                 bitmapImage.StreamSource = memoryStream;
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.EndInit();
-
                 return bitmapImage;
             }
         }

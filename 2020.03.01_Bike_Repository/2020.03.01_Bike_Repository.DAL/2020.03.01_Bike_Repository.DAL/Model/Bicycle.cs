@@ -10,7 +10,7 @@ namespace _2020._03._01_Bike_Repository.DAL.Model
 
         private string model;
 
-        private ImagePathHelper helper = new ImagePathHelper();
+        private readonly ImagePathHelper helper = new ImagePathHelper();
 
         private BitmapImage image;
 
