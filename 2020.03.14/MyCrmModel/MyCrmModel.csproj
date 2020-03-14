@@ -16,6 +16,12 @@
     <Compile Remove="Migrations\20200314121842_CreateCrmDb1.Designer.cs" />
     <Compile Remove="Migrations\20200314122539_CreateCrmDb1.cs" />
     <Compile Remove="Migrations\20200314122539_CreateCrmDb1.Designer.cs" />
+    <Compile Remove="Migrations\20200314122825_CreateCrmDb1.cs" />
+    <Compile Remove="Migrations\20200314122825_CreateCrmDb1.Designer.cs" />
+    <Compile Remove="Migrations\20200314125453_CreateCrmDb1.cs" />
+    <Compile Remove="Migrations\20200314125453_CreateCrmDb1.Designer.cs" />
+    <Compile Remove="Migrations\20200314125714_CreateCrmDb2.cs" />
+    <Compile Remove="Migrations\20200314125714_CreateCrmDb2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +30,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

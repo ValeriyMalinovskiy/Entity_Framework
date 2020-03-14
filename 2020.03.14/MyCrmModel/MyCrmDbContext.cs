@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyCrmModel.Production;
 using MyCrmModel.Sales;
+using System;
 
 namespace MyCrmModel
 {
@@ -26,7 +27,7 @@ namespace MyCrmModel
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-J0F1AGE;Database=MyCrmDb;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-J0F1AGE;Database=MyCrmDatabase;Trusted_Connection=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -118,6 +119,111 @@ namespace MyCrmModel
                 .HasOne(order => order.Store)
                 .WithMany(store => store.Orders)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            Category category1 = new Category
+            {
+                Id = 1,
+                Name = "Food",
+            };
+
+            Brand brand1 = new Brand
+            {
+                Id = 1,
+                Name = "Bounty",
+            };
+
+            Order order1 = new Order
+            {
+                Id = 1,
+                OrderDate = DateTime.UtcNow,
+                CustomerId = 1,
+                OrderStatus = "Pending processing",
+                ShippedDate = null,
+                RequiredDate = DateTime.UtcNow.AddDays(5),
+                StaffId = 1,
+                StoreId = 1,
+            };
+
+            OrderItem orderItem1 = new OrderItem
+            {
+                Discount = 0,
+                ItemId = 1,
+                ListPrice = 12,
+                OrderId =1,
+                ProductId = 1,
+                Quantity = 10
+            };
+
+            Stock stock1 = new Stock
+            {
+                ProductId = 1,
+                Quantity = 100000,
+                StoreId = 1
+            };
+
+            Stock[] stocks = { stock1 };
+
+            Product product1 = new Product
+            {
+                Id = 1,
+                ListPrice = 30,
+                Name = "Bounty",
+                ModelYear = 2000,
+                BrandId = 1,
+                CategoryId = 1,
+            };
+
+            Order[] orders = { order1 };
+
+
+            OrderItem[] orderItems = { orderItem1 };
+
+            Store store1 = new Store
+            {
+                Email = "beststore@gmail.com",
+                Phone = "1122334455",
+                State = "CA",
+                City = "California",
+                Name = "Best Store",
+                Street = "Venice Beach",
+                ZipCode = 90291,
+                Id = 1,
+            };
+
+            Staff staff1 = new Staff
+            {
+                Id = 1,
+                FirstName = "Petya",
+                LastName = "Petr",
+                Active = true,
+                Email = "petr@gmail.com",
+                ManagerId = 2,
+                Phone = "1234456790",
+                StoreId = 1,
+            };
+
+            Customer customer1 = new Customer
+            {
+                Id = 1,
+                City = "New York",
+                Email = "newyorker@gmail.com",
+                FirstName = "Chris",
+                LastName = "Parker",
+                Phone = "9023233455",
+                State = "NY",
+                Street = "1st avenue",
+                ZipCode = 12511
+            };
+
+            modelBuilder.Entity<Customer>().HasData(customer1);
+            modelBuilder.Entity<Staff>().HasData(staff1);
+            modelBuilder.Entity<Stock>().HasData(stock1);
+            modelBuilder.Entity<Store>().HasData(store1);
+            modelBuilder.Entity<Product>().HasData(product1);
+            modelBuilder.Entity<OrderItem>().HasData(orderItem1);
+            modelBuilder.Entity<Order>().HasData(order1);
+            modelBuilder.Entity<Category>().HasData(category1);
+            modelBuilder.Entity<Brand>().HasData(brand1);
         }
     }
 }

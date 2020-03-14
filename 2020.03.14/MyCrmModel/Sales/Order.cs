@@ -16,7 +16,7 @@ namespace MyCrmModel.Sales
 
         public DateTime RequiredDate { get; set; }
 
-        public DateTime ShippedDate { get; set; }
+        public DateTime? ShippedDate { get; set; }
 
         public int StoreId { get; set; }
 
