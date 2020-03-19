@@ -6,4 +6,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="MyCrmViewModel">
+      <HintPath>..\MyCrmViewModel\obj\Debug\netcoreapp3.1\MyCrmViewModel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

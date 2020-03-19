@@ -2,7 +2,7 @@
 
 namespace MyCrmModel.Production
 {
-    internal class Category
+    public class Category
     {
         public int Id { get; set; }
 

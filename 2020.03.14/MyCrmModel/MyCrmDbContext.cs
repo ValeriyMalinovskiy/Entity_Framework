@@ -5,7 +5,7 @@ using System;
 
 namespace MyCrmModel
 {
-    internal class MyCrmDbContext : DbContext
+    public class MyCrmDbContext : DbContext
     {
         public DbSet<Brand> Brands { get; set; }
 

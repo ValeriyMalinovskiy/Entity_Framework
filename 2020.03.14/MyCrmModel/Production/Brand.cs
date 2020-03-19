@@ -2,7 +2,7 @@
 
 namespace MyCrmModel.Production
 {
-    internal class Brand
+    public class Brand
     {
         public int Id { get; set; }
 

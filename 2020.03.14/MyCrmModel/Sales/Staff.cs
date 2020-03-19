@@ -2,7 +2,7 @@
 
 namespace MyCrmModel.Sales
 {
-    internal class Staff
+    public class Staff
     {
         public int Id { get; set; }
 

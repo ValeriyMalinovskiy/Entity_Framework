@@ -2,7 +2,7 @@
 
 namespace MyCrmModel.Sales
 {
-    internal class OrderItem
+    public class OrderItem
     {
         public int OrderId { get; set; }
 

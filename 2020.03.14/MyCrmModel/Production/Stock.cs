@@ -1,6 +1,6 @@
 ﻿namespace MyCrmModel.Production
 {
-    internal class Stock
+    public class Stock
     {
         public int StoreId { get; set; }
 

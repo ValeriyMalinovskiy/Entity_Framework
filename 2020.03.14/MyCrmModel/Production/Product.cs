@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MyCrmModel.Production
 {
-    internal class Product
+    public class Product
     {
         public int Id { get; set; }
 

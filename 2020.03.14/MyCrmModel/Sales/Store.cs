@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MyCrmModel.Sales
 {
-    internal class Store
+    public class Store
     {
         public int Id { get; set; }
 
