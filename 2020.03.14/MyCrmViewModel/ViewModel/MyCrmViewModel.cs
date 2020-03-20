@@ -1,9 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using System.Data.Entity;
-using System.Windows.Input;
-using MyCrmModel;
+﻿using MyCrmModel;
 using MyCrmModel.Sales;
 using MyCrmViewModel.Command;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MyCrmViewModel
 {
@@ -25,9 +24,9 @@ namespace MyCrmViewModel
 
         public MyCrmViewModel()
         {
-            this.ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
-            this.ProcessOrderSortingCommand = new RelayCommand(ProcessOrderSortingCommandExecuted, CommandCanExecute);
-            this.dbContext = new MyCrmModel.MyCrmDbContext();
+            //ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
+            //ProcessOrderSortingCommand = new RelayCommand(ProcessOrderSortingCommandExecuted, CommandCanExecute);
+            //dbContext = new MyCrmModel.MyCrmDbContext();
         }
 
         private bool CommandCanExecute(object obj)

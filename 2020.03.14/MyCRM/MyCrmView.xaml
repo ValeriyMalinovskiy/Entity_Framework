@@ -15,7 +15,7 @@
     </Window.DataContext>
     <TabControl>
         <TabItem Header="Sales">
-            <views:SalesTab DataContext="{Binding dbContext}" />
+            <views:SalesTab />
         </TabItem>
         <TabItem Header="Production">
             <views:ProductionTab />

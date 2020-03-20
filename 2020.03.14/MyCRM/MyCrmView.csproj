@@ -2,13 +2,17 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <StartupObject>MyCRM.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="MyCrmModel">
+      <HintPath>..\MyCrmModel\bin\Release\netcoreapp3.0\MyCrmModel.dll</HintPath>
+    </Reference>
     <Reference Include="MyCrmViewModel">
-      <HintPath>..\MyCrmViewModel\obj\Debug\netcoreapp3.1\MyCrmViewModel.dll</HintPath>
+      <HintPath>..\MyCrmViewModel\bin\Release\netcoreapp3.0\MyCrmViewModel.dll</HintPath>
     </Reference>
   </ItemGroup>
 
