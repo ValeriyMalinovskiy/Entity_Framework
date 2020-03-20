@@ -22,6 +22,6 @@ namespace MyCrmModel.Sales
 
         public int ZipCode { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyCrmModel.Migrations
 {
-    public partial class CreateCrmDb : Migration
+    public partial class CreateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -248,7 +248,7 @@ namespace MyCrmModel.Migrations
             migrationBuilder.InsertData(
                 table: "orders (sales)",
                 columns: new[] { "order_id", "customer_id", "order_date", "order_status", "required_date", "shipped_date", "staff_id", "store_id" },
-                values: new object[] { 1, 1, new DateTime(2020, 3, 14, 14, 6, 59, 588, DateTimeKind.Utc).AddTicks(2690), "Pending processing", new DateTime(2020, 3, 19, 14, 6, 59, 588, DateTimeKind.Utc).AddTicks(5937), null, 1, 1 });
+                values: new object[] { 1, 1, new DateTime(2020, 3, 20, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(6728), "Pending processing", new DateTime(2020, 3, 25, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(8513), null, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "stocks (production)",

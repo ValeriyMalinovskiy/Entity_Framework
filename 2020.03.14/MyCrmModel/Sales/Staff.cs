@@ -16,9 +16,9 @@ namespace MyCrmModel.Sales
 
         public bool Active { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public virtual List<Order> Orders { get; set; }
 
-        public Store Store { get; set; }
+        public virtual Store Store { get; set; }
 
         public int StoreId { get; set; }
 

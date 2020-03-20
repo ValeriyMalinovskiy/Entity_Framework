@@ -8,6 +8,6 @@ namespace MyCrmModel.Production
 
         public string Name { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }

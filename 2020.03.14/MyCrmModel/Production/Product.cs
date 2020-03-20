@@ -17,9 +17,9 @@ namespace MyCrmModel.Production
 
         public decimal ListPrice { get; set; }
 
-        public ICollection<Stock> Stocks { get; set; }
+        public virtual List<Stock> Stocks { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public virtual List<OrderItem> OrderItems { get; set; }
 
     }
 }

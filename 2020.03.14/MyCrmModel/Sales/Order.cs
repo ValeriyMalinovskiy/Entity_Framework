@@ -19,10 +19,30 @@ namespace MyCrmModel.Sales
 
         public int StoreId { get; set; }
 
-        public Store Store { get; set; }
+        public virtual Store Store { get; set; }
 
         public int StaffId { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public virtual List<OrderItem> OrderItems { get; set; }
+
+        public Order()
+        {
+            this.OrderItems = new List<OrderItem>();
+        }
+
+        public override string ToString()
+        {
+            return "Order" + " " + this.Id + " " + this.OrderDate + " " + GetOrderSum();
+        }
+
+        public decimal GetOrderSum()
+        {
+            decimal sum = 0;
+            foreach (var orderItem in this.OrderItems)
+            {
+                sum += orderItem.GetSum();
+            }
+            return sum;
+        }
     }
 }

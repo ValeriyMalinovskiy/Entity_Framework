@@ -36,7 +36,7 @@
                             <RadioButton VerticalAlignment="Center" />
                         </StackPanel>
                     </Grid>
-                    <ListView />
+                    <ListView ItemsSource="{Binding Path=CurrentSelectionOrders}" SelectedItem="{Binding Path=SelectedOrder}" />
                 </StackPanel>
             </Border>
         </Grid>
@@ -49,7 +49,58 @@
                     <StackPanel Background="Aquamarine">
                         <Label HorizontalAlignment="Center">Order details</Label>
                     </StackPanel>
-                    <ListView />
+                    <Grid DataContext="{Binding}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0">Status</Label>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Content="{Binding Path=SelectedOrder.OrderStatus}" />
+
+                        <Label Grid.Row="1" Grid.Column="0">Required date</Label>
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Content="{Binding Path=SelectedOrder.RequiredDate}" />
+
+                        <Label Grid.Row="2" Grid.Column="0">Shipped date</Label>
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Content="{Binding Path=SelectedOrder.ShippedDate}" />
+
+                        <Label Grid.Row="3" Grid.Column="0">Processed by</Label>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Content="{Binding Path=SelectedOrder.StaffId}" />
+
+                        <Label Grid.Row="4" Grid.Column="0">Deliver to</Label>
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Content="{Binding Path=SelectedOrder.Store}" />
+
+                        <Label Grid.Row="5" Grid.Column="0">Contact number</Label>
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Content="{Binding Path=SelectedOrder.Store}" />
+                    </Grid>
                 </StackPanel>
             </Border>
         </Grid>

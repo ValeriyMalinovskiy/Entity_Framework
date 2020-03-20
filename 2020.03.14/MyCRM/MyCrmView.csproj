@@ -8,12 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="MyCrmModel">
-      <HintPath>..\MyCrmModel\bin\Release\netcoreapp3.0\MyCrmModel.dll</HintPath>
-    </Reference>
-    <Reference Include="MyCrmViewModel">
-      <HintPath>..\MyCrmViewModel\bin\Release\netcoreapp3.0\MyCrmViewModel.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\MyCrmModel\MyCrmModel.csproj" />
+    <ProjectReference Include="..\MyCrmViewModel\MyCrmViewModel.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,8 +10,8 @@ using MyCrmModel;
 namespace MyCrmModel.Migrations
 {
     [DbContext(typeof(MyCrmDbContext))]
-    [Migration("20200314140700_CreateCrmDb")]
-    partial class CreateCrmDb
+    [Migration("20200320182553_CreateDb")]
+    partial class CreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -256,9 +256,9 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 14, 14, 6, 59, 588, DateTimeKind.Utc).AddTicks(2690),
+                            OrderDate = new DateTime(2020, 3, 20, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(6728),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 19, 14, 6, 59, 588, DateTimeKind.Utc).AddTicks(5937),
+                            RequiredDate = new DateTime(2020, 3, 25, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(8513),
                             StaffId = 1,
                             StoreId = 1
                         });

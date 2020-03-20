@@ -6,25 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200314113309_CreateCrmDb.cs" />
-    <Compile Remove="Migrations\20200314113309_CreateCrmDb.Designer.cs" />
-    <Compile Remove="Migrations\20200314121431_CreateCrmDb1.cs" />
-    <Compile Remove="Migrations\20200314121431_CreateCrmDb1.Designer.cs" />
-    <Compile Remove="Migrations\20200314121723_CreateCrmDb1.cs" />
-    <Compile Remove="Migrations\20200314121723_CreateCrmDb1.Designer.cs" />
-    <Compile Remove="Migrations\20200314121842_CreateCrmDb1.cs" />
-    <Compile Remove="Migrations\20200314121842_CreateCrmDb1.Designer.cs" />
-    <Compile Remove="Migrations\20200314122539_CreateCrmDb1.cs" />
-    <Compile Remove="Migrations\20200314122539_CreateCrmDb1.Designer.cs" />
-    <Compile Remove="Migrations\20200314122825_CreateCrmDb1.cs" />
-    <Compile Remove="Migrations\20200314122825_CreateCrmDb1.Designer.cs" />
-    <Compile Remove="Migrations\20200314125453_CreateCrmDb1.cs" />
-    <Compile Remove="Migrations\20200314125453_CreateCrmDb1.Designer.cs" />
-    <Compile Remove="Migrations\20200314125714_CreateCrmDb2.cs" />
-    <Compile Remove="Migrations\20200314125714_CreateCrmDb2.Designer.cs" />
+    <Compile Remove="Migrations\20200320160848_CreateDb.cs" />
+    <Compile Remove="Migrations\20200320160848_CreateDb.Designer.cs" />
+    <Compile Remove="Migrations\20200320171731_CreateDb.cs" />
+    <Compile Remove="Migrations\20200320171731_CreateDb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
