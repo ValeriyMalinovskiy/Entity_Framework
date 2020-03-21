@@ -1,6 +1,7 @@
 ﻿using MyCrmModel;
 using MyCrmModel.Sales;
 using MyCrmViewModel.Command;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -15,6 +16,8 @@ namespace MyCrmViewModel
 
         private ObservableCollection<Customer> currentSelectionCustomers;
 
+        private ObservableCollection<string> customizedOrderInfo;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Order selectedOrder;
@@ -27,11 +30,9 @@ namespace MyCrmViewModel
 
         public MyCrmViewModel()
         {
-            ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
-            ProcessOrderSortingCommand = new RelayCommand(ProcessOrderSortingCommandExecuted, CommandCanExecute);
-            dbContext = new MyCrmModel.MyCrmDbContext();
-            this.CurrentSelectionOrders = new ObservableCollection<Order>(dbContext.Orders);
-            this.SelectedOrder = this.currentSelectionOrders[0];
+            this.ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
+            this.ProcessOrderSortingCommand = new RelayCommand(ProcessOrderSortingCommandExecuted, CommandCanExecute);
+            PrepareView();
         }
 
         protected void OnPropertyChanged(string name = null)
@@ -66,8 +67,24 @@ namespace MyCrmViewModel
                     OnPropertyChanged(nameof(this.currentSelectionOrders));
                 }
             }
-        }  
-        
+        }
+
+        public ObservableCollection<string> CustomizedOrderInfo
+        {
+            get
+            {
+                return this.customizedOrderInfo;
+            }
+            set
+            {
+                if (value != this.customizedOrderInfo)
+                {
+                    this.customizedOrderInfo = value;
+                    OnPropertyChanged(nameof(this.customizedOrderInfo));
+                }
+            }
+        }
+
         public Order SelectedOrder
         {
             get
@@ -82,6 +99,34 @@ namespace MyCrmViewModel
                     OnPropertyChanged(nameof(this.selectedOrder));
                 }
             }
+        }
+
+        private void PrepareView()
+        {
+            this.dbContext = new MyCrmModel.MyCrmDbContext();
+            this.CurrentSelectionOrders = new ObservableCollection<Order>(this.dbContext.Orders);
+            this.SelectedOrder = this.currentSelectionOrders[0];
+            this.CustomizedOrderInfo = GetCustomOrderInfo(this.CurrentSelectionOrders);
+        }
+
+        private ObservableCollection<string> GetCustomOrderInfo(IEnumerable<Order> orders)
+        {
+            ObservableCollection<string> customOrderInfo = new ObservableCollection<string>();
+            foreach (var order in orders)
+            {
+                customOrderInfo.Add(order.Id + "\t" + order.OrderDate + "\t" + GetOrderSum(order));
+            }
+            return customOrderInfo;
+        }
+
+        private decimal GetOrderSum(Order order)
+        {
+            decimal sum = 0;
+            foreach (var item in order.OrderItems)
+            {
+                sum += item.ListPrice * item.Quantity - item.Discount;
+            }
+            return sum;
         }
     }
 }

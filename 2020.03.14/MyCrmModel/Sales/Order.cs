@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 
 namespace MyCrmModel.Sales
@@ -24,25 +25,5 @@ namespace MyCrmModel.Sales
         public int StaffId { get; set; }
 
         public virtual List<OrderItem> OrderItems { get; set; }
-
-        public Order()
-        {
-            this.OrderItems = new List<OrderItem>();
-        }
-
-        public override string ToString()
-        {
-            return "Order" + " " + this.Id + " " + this.OrderDate + " " + GetOrderSum();
-        }
-
-        public decimal GetOrderSum()
-        {
-            decimal sum = 0;
-            foreach (var orderItem in this.OrderItems)
-            {
-                sum += orderItem.GetSum();
-            }
-            return sum;
-        }
     }
 }

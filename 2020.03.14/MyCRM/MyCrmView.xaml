@@ -14,7 +14,7 @@
         <vm:MyCrmViewModel />
     </Window.DataContext>
     <TabControl>
-        <TabItem DataContext="{Binding MyCrmViewModel}" Header="Sales">
+        <TabItem Header="Sales">
             <views:SalesTab />
         </TabItem>
         <TabItem Header="Production">

@@ -248,7 +248,7 @@ namespace MyCrmModel.Migrations
             migrationBuilder.InsertData(
                 table: "orders (sales)",
                 columns: new[] { "order_id", "customer_id", "order_date", "order_status", "required_date", "shipped_date", "staff_id", "store_id" },
-                values: new object[] { 1, 1, new DateTime(2020, 3, 20, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(6728), "Pending processing", new DateTime(2020, 3, 25, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(8513), null, 1, 1 });
+                values: new object[] { 1, 1, new DateTime(2020, 3, 21, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(2275), "Pending processing", new DateTime(2020, 3, 26, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(3941), null, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "stocks (production)",

@@ -254,9 +254,9 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 20, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(6728),
+                            OrderDate = new DateTime(2020, 3, 21, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(2275),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 25, 18, 25, 53, 491, DateTimeKind.Utc).AddTicks(8513),
+                            RequiredDate = new DateTime(2020, 3, 26, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(3941),
                             StaffId = 1,
                             StoreId = 1
                         });

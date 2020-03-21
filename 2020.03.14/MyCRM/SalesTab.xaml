@@ -36,7 +36,7 @@
                             <RadioButton VerticalAlignment="Center" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=CurrentSelectionOrders}" SelectedItem="{Binding Path=SelectedOrder}" />
+                    <ListView ItemsSource="{Binding Path=CustomizedOrderInfo}" />
                 </StackPanel>
             </Border>
         </Grid>
@@ -73,7 +73,7 @@
 
                         <Label Grid.Row="1" Grid.Column="0">Required date</Label>
                         <Label
-                            Grid.Row="2"
+                            Grid.Row="1"
                             Grid.Column="1"
                             Content="{Binding Path=SelectedOrder.RequiredDate}" />
 

@@ -19,10 +19,5 @@ namespace MyCrmModel.Sales
         public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }
-
-        public decimal GetSum()
-        {
-            return this.Quantity * this.ListPrice - this.Discount;
-        }
     }
 }

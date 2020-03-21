@@ -27,8 +27,9 @@ namespace MyCrmModel
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=DESKTOP-J0F1AGE;Database=MyCrmDatabase;Trusted_Connection=True");
-            optionsBuilder.UseSqlServer("Server=VMALINOV2;Database=MyCrmDatabase;Trusted_Connection=True");
+            optionsBuilder.UseLazyLoadingProxies().
+            UseSqlServer("Server=VMALINOV2;Database=MyCrmDatabase;Trusted_Connection=True");
+            //Server=DESKTOP-J0F1AGE
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
