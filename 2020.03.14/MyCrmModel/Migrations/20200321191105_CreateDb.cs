@@ -275,10 +275,10 @@ namespace MyCrmModel.Migrations
                 columns: new[] { "order_id", "customer_id", "order_date", "order_status", "required_date", "shipped_date", "staff_id", "store_id" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 3, 18, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(1652), "Completed", new DateTime(2020, 3, 23, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(5104), new DateTime(2020, 3, 21, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(3973), 1, 1 },
-                    { 3, 1, new DateTime(2020, 3, 20, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(7314), "Pending processing", new DateTime(2020, 3, 22, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(7317), null, 1, 1 },
-                    { 4, 1, new DateTime(2020, 3, 21, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(7320), "Order confirmed", new DateTime(2020, 3, 26, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(7322), null, 1, 1 },
-                    { 2, 2, new DateTime(2020, 3, 21, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(7205), "Pending processing", new DateTime(2020, 3, 24, 18, 50, 2, 530, DateTimeKind.Utc).AddTicks(7267), null, 2, 2 }
+                    { 1, 1, new DateTime(2020, 3, 18, 19, 11, 4, 379, DateTimeKind.Utc).AddTicks(2581), "Completed", new DateTime(2020, 3, 23, 19, 11, 4, 379, DateTimeKind.Utc).AddTicks(8052), new DateTime(2020, 3, 21, 19, 11, 4, 379, DateTimeKind.Utc).AddTicks(6879), 1, 1 },
+                    { 3, 1, new DateTime(2020, 3, 20, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(666), "Pending processing", new DateTime(2020, 3, 22, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(669), null, 1, 1 },
+                    { 4, 1, new DateTime(2020, 3, 21, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(673), "Order confirmed", new DateTime(2020, 3, 26, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(675), null, 1, 1 },
+                    { 2, 2, new DateTime(2020, 3, 21, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(548), "Pending processing", new DateTime(2020, 3, 24, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(616), null, 2, 2 }
                 });
 
             migrationBuilder.InsertData(

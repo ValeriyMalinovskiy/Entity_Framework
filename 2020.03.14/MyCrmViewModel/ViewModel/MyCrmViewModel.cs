@@ -23,6 +23,8 @@ namespace MyCrmViewModel
 
         private CustomOrder selectedCustomOrder;
 
+        private bool sortByActiveOrder;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Customer selectedCustomer;
@@ -37,7 +39,7 @@ namespace MyCrmViewModel
         {
             this.ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
             this.AllRadioButtonCommand = new RelayCommand(AllRadioButtonCommandExecuted, CommandCanExecute);
-            this.ByCustomerRadioButtonCommand = new RelayCommand(ByCustomerRadioButtonCommandExecuted, CommandCanExecute);
+            this.ByCustomerRadioButtonCommand = new RelayCommand(ByCustomerRadioButtonCommandExecuted, ByCustomerRadioButtonCommandCanExecute);
             PrepareView();
         }
 
@@ -49,16 +51,41 @@ namespace MyCrmViewModel
         private bool CommandCanExecute(object obj)
         {
             return true;
+        }    
+        
+        private bool ByCustomerRadioButtonCommandCanExecute(object obj)
+        {
+            if (this.SelectedCustomer==null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void AllRadioButtonCommandExecuted(object obj)
         {
-            this.CustomOrdersSortedCollection = this.CustomOrders;
-        }        
-        
+            this.SortByActiveOrder = false;
+            SortOrders();
+        }
+
         private void ByCustomerRadioButtonCommandExecuted(object obj)
         {
-            this.CustomOrdersSortedCollection = new ObservableCollection<CustomOrder>(this.CustomOrders.Where(o => o.CustomerId == this.SelectedCustomer.Id));
+            this.SortByActiveOrder = true;
+            SortOrders();
+        }
+
+        private void SortOrders()
+        {
+            if (this.SortByActiveOrder)
+            {
+                this.CustomOrdersSortedCollection = new ObservableCollection<CustomOrder>(this.CustomOrders.
+                    Where(o => o.CustomerId == this.SelectedCustomer.Id));
+            }
+            else
+            {
+                this.CustomOrdersSortedCollection = new ObservableCollection<CustomOrder>(this.CustomOrders.
+                    Where(o => o.OrderStatus != "Completed"));
+            }
         }
 
         private void ProcessCustomerSortingCommandExecuted(object obj)
@@ -79,8 +106,24 @@ namespace MyCrmViewModel
                     OnPropertyChanged(nameof(this.customOrders));
                 }
             }
-        }         
-        
+        }
+
+        public bool SortByActiveOrder
+        {
+            get
+            {
+                return this.sortByActiveOrder;
+            }
+            set
+            {
+                if (value != this.sortByActiveOrder)
+                {
+                    this.sortByActiveOrder = value;
+                    OnPropertyChanged(nameof(this.sortByActiveOrder));
+                }
+            }
+        }
+
         public ObservableCollection<Customer> Customers
         {
             get
@@ -95,8 +138,8 @@ namespace MyCrmViewModel
                     OnPropertyChanged(nameof(this.customers));
                 }
             }
-        }         
-        
+        }
+
         public Customer SelectedCustomer
         {
             get
@@ -109,10 +152,11 @@ namespace MyCrmViewModel
                 {
                     this.selectedCustomer = value;
                     OnPropertyChanged(nameof(this.selectedCustomer));
+                    SortOrders();
                 }
             }
-        }        
-        
+        }
+
         public ObservableCollection<CustomOrder> CustomOrdersSortedCollection
         {
             get
@@ -154,7 +198,8 @@ namespace MyCrmViewModel
             {
                 this.CustomOrders.Add(new CustomOrder(order));
             }
-            this.Customers =  new ObservableCollection<Customer>(this.dbContext.Customers);
+            this.Customers = new ObservableCollection<Customer>(this.dbContext.Customers);
+            SortOrders();
         }
     }
 

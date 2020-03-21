@@ -31,12 +31,15 @@
                             HorizontalAlignment="Right"
                             Orientation="Horizontal">
                             <Label>All</Label>
-                            <RadioButton VerticalAlignment="Center" Command="{Binding Path=AllRadioButtonCommand}" />
+                            <RadioButton
+                                VerticalAlignment="Center"
+                                Command="{Binding Path=AllRadioButtonCommand}"
+                                IsChecked="True" />
                             <Label>By customer</Label>
                             <RadioButton VerticalAlignment="Center" Command="{Binding Path=ByCustomerRadioButtonCommand}" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=CustomizedOrders}" SelectedItem="{Binding Path=SelectedCustomOrder}" />
+                    <ListView ItemsSource="{Binding Path=CustomOrdersSortedCollection}" SelectedItem="{Binding Path=SelectedCustomOrder}" />
                 </StackPanel>
             </Border>
         </Grid>
@@ -121,12 +124,22 @@
                             HorizontalAlignment="Right"
                             Orientation="Horizontal">
                             <Label>All</Label>
-                            <RadioButton VerticalAlignment="Center" />
+                            <RadioButton VerticalAlignment="Center" IsChecked="True" />
                             <Label>Open orders</Label>
                             <RadioButton VerticalAlignment="Center" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=Customers}" SelectedItem="{Binding Path=SelectedCustomer}" />
+                    <ListView ItemsSource="{Binding Path=Customers}" SelectedItem="{Binding Path=SelectedCustomer}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding FirstName}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding LastName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackPanel>
             </Border>
         </Grid>
