@@ -127,60 +127,64 @@ namespace MyCrmModel
                 Id = 1,
                 Name = "Food",
             };
+            Category category2 = new Category
+            {
+                Id = 2,
+                Name = "Beverage",
+            };
             Brand brand1 = new Brand
             {
                 Id = 1,
                 Name = "Bounty",
             };
+            Brand brand2 = new Brand
+            {
+                Id = 2,
+                Name = "Pepsi",
+            };
             Order order1 = new Order
             {
                 Id = 1,
+                OrderDate = DateTime.UtcNow.AddDays(-3),
+                CustomerId = 1,
+                OrderStatus = "Completed",
+                ShippedDate = DateTime.UtcNow,
+                RequiredDate = DateTime.UtcNow.AddDays(2),
+                StaffId = 1,
+                StoreId = 1,
+            };
+            Order order2 = new Order
+            {
+                Id = 2,
                 OrderDate = DateTime.UtcNow,
+                CustomerId = 2,
+                OrderStatus = "Pending processing",
+                ShippedDate = null,
+                RequiredDate = DateTime.UtcNow.AddDays(3),
+                StaffId = 2,
+                StoreId = 2,
+            };
+            Order order3 = new Order
+            {
+                Id = 3,
+                OrderDate = DateTime.UtcNow.AddDays(-1),
                 CustomerId = 1,
                 OrderStatus = "Pending processing",
+                ShippedDate = null,
+                RequiredDate = DateTime.UtcNow.AddDays(1),
+                StaffId = 1,
+                StoreId = 1,
+            };
+            Order order4 = new Order
+            {
+                Id = 4,
+                OrderDate = DateTime.UtcNow,
+                CustomerId = 1,
+                OrderStatus = "Order confirmed",
                 ShippedDate = null,
                 RequiredDate = DateTime.UtcNow.AddDays(5),
                 StaffId = 1,
                 StoreId = 1,
-            };
-
-            OrderItem orderItem1 = new OrderItem
-            {
-                Discount = 0,
-                ItemId = 1,
-                ListPrice = 12,
-                OrderId = 1,
-                ProductId = 1,
-                Quantity = 10
-            };
-            Stock stock1 = new Stock
-            {
-                ProductId = 1,
-                Quantity = 100000,
-                StoreId = 1
-            };
-            Stock[] stocks = { stock1 };
-            Product product1 = new Product
-            {
-                Id = 1,
-                ListPrice = 30,
-                Name = "Bounty",
-                ModelYear = 2000,
-                BrandId = 1,
-                CategoryId = 1,
-            };
-            Order[] orders = { order1 };
-            OrderItem[] orderItems = { orderItem1 };
-            Store store1 = new Store
-            {
-                Email = "beststore@gmail.com",
-                Phone = "1122334455",
-                State = "CA",
-                City = "California",
-                Name = "Best Store",
-                Street = "Venice Beach",
-                ZipCode = 90291,
-                Id = 1,
             };
             Staff staff1 = new Staff
             {
@@ -193,28 +197,165 @@ namespace MyCrmModel
                 Phone = "1234456790",
                 StoreId = 1,
             };
+            Staff staff2 = new Staff
+            {
+                Id = 2,
+                FirstName = "Vasya",
+                LastName = "Kvasya",
+                Active = true,
+                Email = "vaskvas@gmail.com",
+                ManagerId = 2,
+                Phone = "1234456999",
+                StoreId = 2,
+            };
+            Product product1 = new Product
+            {
+                Id = 1,
+                ListPrice = 3,
+                Name = "Bounty",
+                ModelYear = 2000,
+                BrandId = 1,
+                CategoryId = 1,
+            };
+            Product product2 = new Product
+            {
+                Id = 2,
+                ListPrice = 10,
+                Name = "Pepsi",
+                ModelYear = 1998,
+                BrandId = 2,
+                CategoryId = 2,
+            };
+            OrderItem orderItem1 = new OrderItem
+            {
+                Discount = 0,
+                ItemId = 1,
+                ListPrice = 4,
+                OrderId = 1,
+                ProductId = 1,
+                Quantity = 10
+            };
+            OrderItem orderItem2 = new OrderItem
+            {
+                Discount = 5,
+                ItemId = 2,
+                ListPrice = 4,
+                OrderId = 2,
+                ProductId = 2,
+                Quantity = 10
+            };            
+            OrderItem orderItem3 = new OrderItem
+            {
+                Discount = 2,
+                ItemId = 1,
+                ListPrice = 4,
+                OrderId = 3,
+                ProductId = 1,
+                Quantity = 8
+            };
+            OrderItem orderItem4 = new OrderItem
+            {
+                Discount = 0,
+                ItemId = 2,
+                ListPrice = 4,
+                OrderId = 4,
+                ProductId = 2,
+                Quantity = 1
+            };
+            Stock stock1 = new Stock
+            {
+                ProductId = 1,
+                Quantity = 100000,
+                StoreId = 1
+            };
+            Stock stock2 = new Stock
+            {
+                ProductId = 2,
+                Quantity = 500000,
+                StoreId = 1
+            };
+            Store store1 = new Store
+            {
+                Email = "beststore@gmail.com",
+                Phone = "1122334455",
+                State = "CA",
+                City = "California",
+                Name = "Best Store",
+                Street = "Venice Beach",
+                ZipCode = 90291,
+                Id = 1,
+            };
+            Store store2 = new Store
+            {
+                Email = "beststore_ca@gmail.com",
+                Phone = "1122334456",
+                State = "CA",
+                City = "California",
+                Name = "Same Store",
+                Street = "St Louis Ave",
+                ZipCode = 90250,
+                Id = 2,
+            };
             Customer customer1 = new Customer
             {
                 Id = 1,
-                City = "New York",
-                Email = "newyorker@gmail.com",
-                FirstName = "Chris",
-                LastName = "Parker",
-                Phone = "9023233455",
-                State = "NY",
-                Street = "1st avenue",
-                ZipCode = 12511
+                City = "Kyiv",
+                Email = "klichko@gmail.com",
+                FirstName = "Vitalik",
+                LastName = "Klich",
+                Phone = "0934608651",
+                State = "Kv",
+                Street = "Kreschatic",
+                ZipCode = 61022
             };
-
+            Customer customer2 = new Customer
+            {
+                Id = 2,
+                City = "Minneapolis",
+                Email = "minneapoliser@gmail.com",
+                FirstName = "Dave",
+                LastName = "Lombardo",
+                Phone = "9028235474",
+                State = "MN",
+                Street = "Nicollet Avenue",
+                ZipCode = 55404
+            };
+            Customer customer3 = new Customer
+            {
+                Id = 3,
+                City = "Kharkiv",
+                Email = "kernes@gmail.com",
+                FirstName = "Gena",
+                LastName = "Kernes",
+                Phone = "0634608651",
+                State = "Kh",
+                Street = "Nauki ave",
+                ZipCode = 61022
+            };  
+            
             modelBuilder.Entity<Customer>().HasData(customer1);
+            modelBuilder.Entity<Customer>().HasData(customer2);
+            modelBuilder.Entity<Customer>().HasData(customer3);
             modelBuilder.Entity<Staff>().HasData(staff1);
+            modelBuilder.Entity<Staff>().HasData(staff2);
             modelBuilder.Entity<Stock>().HasData(stock1);
+            modelBuilder.Entity<Stock>().HasData(stock2);
             modelBuilder.Entity<Store>().HasData(store1);
+            modelBuilder.Entity<Store>().HasData(store2);
             modelBuilder.Entity<Product>().HasData(product1);
+            modelBuilder.Entity<Product>().HasData(product2);
             modelBuilder.Entity<OrderItem>().HasData(orderItem1);
+            modelBuilder.Entity<OrderItem>().HasData(orderItem2);
+            modelBuilder.Entity<OrderItem>().HasData(orderItem3);
+            modelBuilder.Entity<OrderItem>().HasData(orderItem4);
             modelBuilder.Entity<Order>().HasData(order1);
+            modelBuilder.Entity<Order>().HasData(order2);
+            modelBuilder.Entity<Order>().HasData(order3);
+            modelBuilder.Entity<Order>().HasData(order4);
             modelBuilder.Entity<Category>().HasData(category1);
+            modelBuilder.Entity<Category>().HasData(category2);
             modelBuilder.Entity<Brand>().HasData(brand1);
+            modelBuilder.Entity<Brand>().HasData(brand2);
         }
     }
 }

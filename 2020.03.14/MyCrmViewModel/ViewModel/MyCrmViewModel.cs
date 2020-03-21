@@ -4,6 +4,7 @@ using MyCrmViewModel.Command;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace MyCrmViewModel
@@ -12,26 +13,28 @@ namespace MyCrmViewModel
     {
         public MyCrmDbContext dbContext { get; set; }
 
-        public ObservableCollection<Order> currentSelectionOrders { get; set; }
+        private IEnumerable<Order> orders;
 
-        private ObservableCollection<Customer> currentSelectionCustomers;
+        private ObservableCollection<Customer> customers;
 
-        private ObservableCollection<string> customizedOrderInfo;
+        private ObservableCollection<CustomOrder> customizedOrders;
+
+        private ObservableCollection<CustomOrder> customizedOrdersSortedCollection;
+
+        private CustomOrder selectedCustomizedOrder;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Order selectedOrder;
-
         public Customer selectedCustomer { get; set; }
 
-        public ICommand ProcessOrderSortingCommand { get; set; }
+        public ICommand AllRadioButtonCommand { get; set; }
 
         public ICommand ProcessCustomerSortingCommand { get; set; }
 
         public MyCrmViewModel()
         {
             this.ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
-            this.ProcessOrderSortingCommand = new RelayCommand(ProcessOrderSortingCommandExecuted, CommandCanExecute);
+            this.AllRadioButtonCommand = new RelayCommand(AllRadioButtonCommandExecuted, CommandCanExecute);
             PrepareView();
         }
 
@@ -45,58 +48,70 @@ namespace MyCrmViewModel
             return true;
         }
 
-        private void ProcessOrderSortingCommandExecuted(object obj)
+        private void AllRadioButtonCommandExecuted(object obj)
         {
+            this.CustomizedOrdersSortedCollection = this.CustomizedOrders;
+        }        
+        
+        private void ByCustomerRadioButtonCommandExecuted(object obj)
+        {
+            foreach (var item in this.CustomizedOrders)
+            {
+                if (item.CustomerId == )
+                {
+                    this.CustomizedOrdersSortedCollection.Add(item);
+                }
+            }
         }
 
         private void ProcessCustomerSortingCommandExecuted(object obj)
         {
         }
 
-        public ObservableCollection<Order> CurrentSelectionOrders
+        public ObservableCollection<CustomOrder> CustomizedOrders
         {
             get
             {
-                return this.currentSelectionOrders;
+                return this.customizedOrders;
             }
             set
             {
-                if (value != this.currentSelectionOrders)
+                if (value != this.customizedOrders)
                 {
-                    this.currentSelectionOrders = value;
-                    OnPropertyChanged(nameof(this.currentSelectionOrders));
+                    this.customizedOrders = value;
+                    OnPropertyChanged(nameof(this.customizedOrders));
+                }
+            }
+        }        
+        
+        public ObservableCollection<CustomOrder> CustomizedOrdersSortedCollection
+        {
+            get
+            {
+                return this.customizedOrdersSortedCollection;
+            }
+            set
+            {
+                if (value != this.customizedOrdersSortedCollection)
+                {
+                    this.customizedOrdersSortedCollection = value;
+                    OnPropertyChanged(nameof(this.customizedOrdersSortedCollection));
                 }
             }
         }
 
-        public ObservableCollection<string> CustomizedOrderInfo
+        public CustomOrder SelectedCustomizedOrder
         {
             get
             {
-                return this.customizedOrderInfo;
+                return this.selectedCustomizedOrder;
             }
             set
             {
-                if (value != this.customizedOrderInfo)
+                if (value != this.selectedCustomizedOrder)
                 {
-                    this.customizedOrderInfo = value;
-                    OnPropertyChanged(nameof(this.customizedOrderInfo));
-                }
-            }
-        }
-
-        public Order SelectedOrder
-        {
-            get
-            {
-                return this.selectedOrder;
-            }
-            set
-            {
-                if (value != this.selectedOrder)
-                {
-                    this.selectedOrder = value;
-                    OnPropertyChanged(nameof(this.selectedOrder));
+                    this.selectedCustomizedOrder = value;
+                    OnPropertyChanged(nameof(this.selectedCustomizedOrder));
                 }
             }
         }
@@ -104,29 +119,46 @@ namespace MyCrmViewModel
         private void PrepareView()
         {
             this.dbContext = new MyCrmModel.MyCrmDbContext();
-            this.CurrentSelectionOrders = new ObservableCollection<Order>(this.dbContext.Orders);
-            this.SelectedOrder = this.currentSelectionOrders[0];
-            this.CustomizedOrderInfo = GetCustomOrderInfo(this.CurrentSelectionOrders);
-        }
-
-        private ObservableCollection<string> GetCustomOrderInfo(IEnumerable<Order> orders)
-        {
-            ObservableCollection<string> customOrderInfo = new ObservableCollection<string>();
-            foreach (var order in orders)
+            this.orders = this.dbContext.Orders.ToArray();
+            this.CustomizedOrders = new ObservableCollection<CustomOrder>();
+            foreach (var order in this.orders)
             {
-                customOrderInfo.Add(order.Id + "\t" + order.OrderDate + "\t" + GetOrderSum(order));
+                this.CustomizedOrders.Add(new CustomOrder(order));
             }
-            return customOrderInfo;
+            this.Customers =  new ObservableCollection<Customer>(this.dbContext.Customers);
+        }
+    }
+
+    public class CustomOrder : Order
+    {
+        public CustomOrder(Order order)
+        {
+            this.CustomerId = order.Id;
+            this.Id = order.Id;
+            this.OrderDate = order.OrderDate;
+            this.OrderItems = order.OrderItems;
+            this.OrderStatus = order.OrderStatus;
+            this.RequiredDate = order.RequiredDate;
+            this.ShippedDate = order.ShippedDate;
+            this.StaffId = order.StaffId;
+            this.Store = order.Store;
+            this.StoreId = order.StoreId;
         }
 
-        private decimal GetOrderSum(Order order)
+        private decimal GetOrderSum()
         {
             decimal sum = 0;
-            foreach (var item in order.OrderItems)
+            foreach (var item in this.OrderItems)
             {
                 sum += item.ListPrice * item.Quantity - item.Discount;
             }
             return sum;
+        }
+
+        public override string ToString()
+        {
+            return $"Order {this.Id:0000}\t{this.OrderDate:d}\t{GetOrderSum():n2}";
+            ;
         }
     }
 }

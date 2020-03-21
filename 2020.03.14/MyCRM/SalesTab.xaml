@@ -36,7 +36,7 @@
                             <RadioButton VerticalAlignment="Center" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=CustomizedOrderInfo}" />
+                    <ListView ItemsSource="{Binding Path=CustomizedOrders}" SelectedItem="{Binding Path=SelectedCustomizedOrder}" />
                 </StackPanel>
             </Border>
         </Grid>
@@ -126,7 +126,7 @@
                             <RadioButton VerticalAlignment="Center" />
                         </StackPanel>
                     </Grid>
-                    <ListView />
+                    <ListView ItemsSource="{Binding Path=Customers}" SelectedItem="{Binding Path=SelectedCustomer}"/>
                 </StackPanel>
             </Border>
         </Grid>

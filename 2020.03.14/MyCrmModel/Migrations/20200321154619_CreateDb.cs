@@ -218,47 +218,88 @@ namespace MyCrmModel.Migrations
             migrationBuilder.InsertData(
                 table: "brands (production)",
                 columns: new[] { "brand_id", "brand_name" },
-                values: new object[] { 1, "Bounty" });
+                values: new object[,]
+                {
+                    { 1, "Bounty" },
+                    { 2, "Pepsi" }
+                });
 
             migrationBuilder.InsertData(
                 table: "categories (production)",
                 columns: new[] { "category_id", "category_name" },
-                values: new object[] { 1, "Food" });
+                values: new object[,]
+                {
+                    { 1, "Food" },
+                    { 2, "Beverage" }
+                });
 
             migrationBuilder.InsertData(
                 table: "customers (sales)",
                 columns: new[] { "customer_id", "city", "email", "first_name", "last_name", "phone", "state", "street", "zip_code" },
-                values: new object[] { 1, "New York", "newyorker@gmail.com", "Chris", "Parker", "9023233455", "NY", "1st avenue", 12511 });
+                values: new object[,]
+                {
+                    { 1, "Kyiv", "klichko@gmail.com", "Vitalik", "Klich", "0934608651", "Kv", "Kreschatic", 61022 },
+                    { 2, "Minneapolis", "minneapoliser@gmail.com", "Dave", "Lombardo", "9028235474", "MN", "Nicollet Avenue", 55404 },
+                    { 3, "Kharkiv", "kernes@gmail.com", "Gena", "Kernes", "0634608651", "Kh", "Nauki ave", 61022 }
+                });
 
             migrationBuilder.InsertData(
                 table: "stores (sales)",
                 columns: new[] { "store_id", "city", "email", "store_name", "phone", "state", "street", "zip_code" },
-                values: new object[] { 1, "California", "beststore@gmail.com", "Best Store", "1122334455", "CA", "Venice Beach", 90291 });
+                values: new object[,]
+                {
+                    { 1, "California", "beststore@gmail.com", "Best Store", "1122334455", "CA", "Venice Beach", 90291 },
+                    { 2, "California", "beststore_ca@gmail.com", "Same Store", "1122334456", "CA", "St Louis Ave", 90250 }
+                });
 
             migrationBuilder.InsertData(
                 table: "products (production)",
                 columns: new[] { "product_id", "brand_id", "category_id", "list_price", "model_year", "product_name" },
-                values: new object[] { 1, 1, 1, 30m, 2000, "Bounty" });
+                values: new object[,]
+                {
+                    { 1, 1, 1, 3m, 2000, "Bounty" },
+                    { 2, 2, 2, 10m, 1998, "Pepsi" }
+                });
 
             migrationBuilder.InsertData(
                 table: "staffs (sales)",
                 columns: new[] { "staff_id", "active", "email", "first_name", "last_name", "manager_id", "phone", "store_id" },
-                values: new object[] { 1, true, "petr@gmail.com", "Petya", "Petr", 2, "1234456790", 1 });
+                values: new object[,]
+                {
+                    { 1, true, "petr@gmail.com", "Petya", "Petr", 2, "1234456790", 1 },
+                    { 2, true, "vaskvas@gmail.com", "Vasya", "Kvasya", 2, "1234456999", 2 }
+                });
 
             migrationBuilder.InsertData(
                 table: "orders (sales)",
                 columns: new[] { "order_id", "customer_id", "order_date", "order_status", "required_date", "shipped_date", "staff_id", "store_id" },
-                values: new object[] { 1, 1, new DateTime(2020, 3, 21, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(2275), "Pending processing", new DateTime(2020, 3, 26, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(3941), null, 1, 1 });
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2020, 3, 18, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(4157), "Completed", new DateTime(2020, 3, 23, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(5961), new DateTime(2020, 3, 21, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(5389), 1, 1 },
+                    { 3, 1, new DateTime(2020, 3, 20, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7148), "Pending processing", new DateTime(2020, 3, 22, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7149), null, 1, 1 },
+                    { 4, 1, new DateTime(2020, 3, 21, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7151), "Order confirmed", new DateTime(2020, 3, 26, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7152), null, 1, 1 },
+                    { 2, 2, new DateTime(2020, 3, 21, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7094), "Pending processing", new DateTime(2020, 3, 24, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7126), null, 2, 2 }
+                });
 
             migrationBuilder.InsertData(
                 table: "stocks (production)",
                 columns: new[] { "store_id", "product_id", "quantity" },
-                values: new object[] { 1, 1, 100000 });
+                values: new object[,]
+                {
+                    { 1, 1, 100000 },
+                    { 1, 2, 500000 }
+                });
 
             migrationBuilder.InsertData(
                 table: "order_items (sales)",
                 columns: new[] { "order_id", "item_id", "discount", "list_price", "product_id", "quantity" },
-                values: new object[] { 1, 1, 0m, 12m, 1, 10 });
+                values: new object[,]
+                {
+                    { 1, 1, 0m, 4m, 1, 10 },
+                    { 3, 1, 2m, 4m, 1, 8 },
+                    { 4, 2, 0m, 4m, 2, 1 },
+                    { 2, 2, 5m, 4m, 2, 10 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_order_items (sales)_product_id",

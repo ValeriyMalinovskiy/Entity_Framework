@@ -10,7 +10,7 @@ using MyCrmModel;
 namespace MyCrmModel.Migrations
 {
     [DbContext(typeof(MyCrmDbContext))]
-    [Migration("20200321134945_CreateDb")]
+    [Migration("20200321154619_CreateDb")]
     partial class CreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,11 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             Name = "Bounty"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Pepsi"
                         });
                 });
 
@@ -66,6 +71,11 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             Name = "Food"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Beverage"
                         });
                 });
 
@@ -111,9 +121,18 @@ namespace MyCrmModel.Migrations
                             Id = 1,
                             BrandId = 1,
                             CategoryId = 1,
-                            ListPrice = 30m,
+                            ListPrice = 3m,
                             ModelYear = 2000,
                             Name = "Bounty"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BrandId = 2,
+                            CategoryId = 2,
+                            ListPrice = 10m,
+                            ModelYear = 1998,
+                            Name = "Pepsi"
                         });
                 });
 
@@ -143,6 +162,12 @@ namespace MyCrmModel.Migrations
                             StoreId = 1,
                             ProductId = 1,
                             Quantity = 100000
+                        },
+                        new
+                        {
+                            StoreId = 1,
+                            ProductId = 2,
+                            Quantity = 500000
                         });
                 });
 
@@ -194,14 +219,38 @@ namespace MyCrmModel.Migrations
                         new
                         {
                             Id = 1,
-                            City = "New York",
-                            Email = "newyorker@gmail.com",
-                            FirstName = "Chris",
-                            LastName = "Parker",
-                            Phone = "9023233455",
-                            State = "NY",
-                            Street = "1st avenue",
-                            ZipCode = 12511
+                            City = "Kyiv",
+                            Email = "klichko@gmail.com",
+                            FirstName = "Vitalik",
+                            LastName = "Klich",
+                            Phone = "0934608651",
+                            State = "Kv",
+                            Street = "Kreschatic",
+                            ZipCode = 61022
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Minneapolis",
+                            Email = "minneapoliser@gmail.com",
+                            FirstName = "Dave",
+                            LastName = "Lombardo",
+                            Phone = "9028235474",
+                            State = "MN",
+                            Street = "Nicollet Avenue",
+                            ZipCode = 55404
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Kharkiv",
+                            Email = "kernes@gmail.com",
+                            FirstName = "Gena",
+                            LastName = "Kernes",
+                            Phone = "0634608651",
+                            State = "Kh",
+                            Street = "Nauki ave",
+                            ZipCode = 61022
                         });
                 });
 
@@ -256,9 +305,40 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 21, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(2275),
+                            OrderDate = new DateTime(2020, 3, 18, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(4157),
+                            OrderStatus = "Completed",
+                            RequiredDate = new DateTime(2020, 3, 23, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(5961),
+                            ShippedDate = new DateTime(2020, 3, 21, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(5389),
+                            StaffId = 1,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CustomerId = 2,
+                            OrderDate = new DateTime(2020, 3, 21, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7094),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 26, 13, 49, 44, 372, DateTimeKind.Utc).AddTicks(3941),
+                            RequiredDate = new DateTime(2020, 3, 24, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7126),
+                            StaffId = 2,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CustomerId = 1,
+                            OrderDate = new DateTime(2020, 3, 20, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7148),
+                            OrderStatus = "Pending processing",
+                            RequiredDate = new DateTime(2020, 3, 22, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7149),
+                            StaffId = 1,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CustomerId = 1,
+                            OrderDate = new DateTime(2020, 3, 21, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7151),
+                            OrderStatus = "Order confirmed",
+                            RequiredDate = new DateTime(2020, 3, 26, 15, 46, 19, 346, DateTimeKind.Utc).AddTicks(7152),
                             StaffId = 1,
                             StoreId = 1
                         });
@@ -302,9 +382,36 @@ namespace MyCrmModel.Migrations
                             OrderId = 1,
                             ItemId = 1,
                             Discount = 0m,
-                            ListPrice = 12m,
+                            ListPrice = 4m,
                             ProductId = 1,
                             Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 2,
+                            ItemId = 2,
+                            Discount = 5m,
+                            ListPrice = 4m,
+                            ProductId = 2,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 3,
+                            ItemId = 1,
+                            Discount = 2m,
+                            ListPrice = 4m,
+                            ProductId = 1,
+                            Quantity = 8
+                        },
+                        new
+                        {
+                            OrderId = 4,
+                            ItemId = 2,
+                            Discount = 0m,
+                            ListPrice = 4m,
+                            ProductId = 2,
+                            Quantity = 1
                         });
                 });
 
@@ -361,6 +468,17 @@ namespace MyCrmModel.Migrations
                             ManagerId = 2,
                             Phone = "1234456790",
                             StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Active = true,
+                            Email = "vaskvas@gmail.com",
+                            FirstName = "Vasya",
+                            LastName = "Kvasya",
+                            ManagerId = 2,
+                            Phone = "1234456999",
+                            StoreId = 2
                         });
                 });
 
@@ -415,6 +533,17 @@ namespace MyCrmModel.Migrations
                             State = "CA",
                             Street = "Venice Beach",
                             ZipCode = 90291
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "California",
+                            Email = "beststore_ca@gmail.com",
+                            Name = "Same Store",
+                            Phone = "1122334456",
+                            State = "CA",
+                            Street = "St Louis Ave",
+                            ZipCode = 90250
                         });
                 });
 
