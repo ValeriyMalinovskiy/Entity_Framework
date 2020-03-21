@@ -28,8 +28,8 @@ namespace MyCrmModel
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies().
-            UseSqlServer("Server=VMALINOV2;Database=MyCrmDatabase;Trusted_Connection=True");
-            //Server=DESKTOP-J0F1AGE
+            UseSqlServer("Server=Server=DESKTOP-J0F1AGE;Database=Fuckingatabase;Trusted_Connection=True");
+            //VMALINOV2
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

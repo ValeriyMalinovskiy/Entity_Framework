@@ -17,24 +17,27 @@ namespace MyCrmViewModel
 
         private ObservableCollection<Customer> customers;
 
-        private ObservableCollection<CustomOrder> customizedOrders;
+        private ObservableCollection<CustomOrder> customOrders;
 
-        private ObservableCollection<CustomOrder> customizedOrdersSortedCollection;
+        private ObservableCollection<CustomOrder> customOrdersSortedCollection;
 
-        private CustomOrder selectedCustomizedOrder;
+        private CustomOrder selectedCustomOrder;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Customer selectedCustomer { get; set; }
+        private Customer selectedCustomer;
 
         public ICommand AllRadioButtonCommand { get; set; }
 
         public ICommand ProcessCustomerSortingCommand { get; set; }
 
+        public ICommand ByCustomerRadioButtonCommand { get; set; }
+
         public MyCrmViewModel()
         {
             this.ProcessCustomerSortingCommand = new RelayCommand(ProcessCustomerSortingCommandExecuted, CommandCanExecute);
             this.AllRadioButtonCommand = new RelayCommand(AllRadioButtonCommandExecuted, CommandCanExecute);
+            this.ByCustomerRadioButtonCommand = new RelayCommand(ByCustomerRadioButtonCommandExecuted, CommandCanExecute);
             PrepareView();
         }
 
@@ -50,68 +53,94 @@ namespace MyCrmViewModel
 
         private void AllRadioButtonCommandExecuted(object obj)
         {
-            this.CustomizedOrdersSortedCollection = this.CustomizedOrders;
+            this.CustomOrdersSortedCollection = this.CustomOrders;
         }        
         
         private void ByCustomerRadioButtonCommandExecuted(object obj)
         {
-            foreach (var item in this.CustomizedOrders)
-            {
-                if (item.CustomerId == )
-                {
-                    this.CustomizedOrdersSortedCollection.Add(item);
-                }
-            }
+            this.CustomOrdersSortedCollection = new ObservableCollection<CustomOrder>(this.CustomOrders.Where(o => o.CustomerId == this.SelectedCustomer.Id));
         }
 
         private void ProcessCustomerSortingCommandExecuted(object obj)
         {
         }
 
-        public ObservableCollection<CustomOrder> CustomizedOrders
+        public ObservableCollection<CustomOrder> CustomOrders
         {
             get
             {
-                return this.customizedOrders;
+                return this.customOrders;
             }
             set
             {
-                if (value != this.customizedOrders)
+                if (value != this.customOrders)
                 {
-                    this.customizedOrders = value;
-                    OnPropertyChanged(nameof(this.customizedOrders));
+                    this.customOrders = value;
+                    OnPropertyChanged(nameof(this.customOrders));
+                }
+            }
+        }         
+        
+        public ObservableCollection<Customer> Customers
+        {
+            get
+            {
+                return this.customers;
+            }
+            set
+            {
+                if (value != this.customers)
+                {
+                    this.customers = value;
+                    OnPropertyChanged(nameof(this.customers));
+                }
+            }
+        }         
+        
+        public Customer SelectedCustomer
+        {
+            get
+            {
+                return this.selectedCustomer;
+            }
+            set
+            {
+                if (value != this.selectedCustomer)
+                {
+                    this.selectedCustomer = value;
+                    OnPropertyChanged(nameof(this.selectedCustomer));
                 }
             }
         }        
         
-        public ObservableCollection<CustomOrder> CustomizedOrdersSortedCollection
+        public ObservableCollection<CustomOrder> CustomOrdersSortedCollection
         {
             get
             {
-                return this.customizedOrdersSortedCollection;
+                return this.customOrdersSortedCollection;
             }
             set
             {
-                if (value != this.customizedOrdersSortedCollection)
+                if (value != this.customOrdersSortedCollection)
                 {
-                    this.customizedOrdersSortedCollection = value;
-                    OnPropertyChanged(nameof(this.customizedOrdersSortedCollection));
+                    this.customOrdersSortedCollection = value;
+                    OnPropertyChanged(nameof(this.customOrdersSortedCollection));
                 }
             }
         }
 
-        public CustomOrder SelectedCustomizedOrder
+        public CustomOrder SelectedCustomOrder
         {
             get
             {
-                return this.selectedCustomizedOrder;
+                return this.selectedCustomOrder;
             }
             set
             {
-                if (value != this.selectedCustomizedOrder)
+                if (value != this.selectedCustomOrder)
                 {
-                    this.selectedCustomizedOrder = value;
-                    OnPropertyChanged(nameof(this.selectedCustomizedOrder));
+                    this.selectedCustomOrder = value;
+                    OnPropertyChanged(nameof(this.selectedCustomOrder));
                 }
             }
         }
@@ -120,10 +149,10 @@ namespace MyCrmViewModel
         {
             this.dbContext = new MyCrmModel.MyCrmDbContext();
             this.orders = this.dbContext.Orders.ToArray();
-            this.CustomizedOrders = new ObservableCollection<CustomOrder>();
+            this.CustomOrders = new ObservableCollection<CustomOrder>();
             foreach (var order in this.orders)
             {
-                this.CustomizedOrders.Add(new CustomOrder(order));
+                this.CustomOrders.Add(new CustomOrder(order));
             }
             this.Customers =  new ObservableCollection<Customer>(this.dbContext.Customers);
         }
