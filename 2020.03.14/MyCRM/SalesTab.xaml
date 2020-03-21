@@ -23,14 +23,14 @@
                     <Grid Background="Aquamarine">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
-                            <ColumnDefinition Width="1.3*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0">In-process orders</Label>
+                        <Label Grid.Column="0">Orders</Label>
                         <StackPanel
                             Grid.Column="1"
                             HorizontalAlignment="Right"
                             Orientation="Horizontal">
-                            <Label>All</Label>
+                            <Label>In-process</Label>
                             <RadioButton
                                 VerticalAlignment="Center"
                                 Command="{Binding Path=AllRadioButtonCommand}"
@@ -39,7 +39,7 @@
                             <RadioButton VerticalAlignment="Center" Command="{Binding Path=ByCustomerRadioButtonCommand}" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=CustomOrdersSortedCollection}" SelectedItem="{Binding Path=SelectedCustomOrder}" />
+                    <ListView ItemsSource="{Binding Path=OrdersToShow}" SelectedItem="{Binding Path=SelectedOrder}" />
                 </StackPanel>
             </Border>
         </Grid>
@@ -52,7 +52,7 @@
                     <StackPanel Background="Aquamarine">
                         <Label HorizontalAlignment="Center">Order details</Label>
                     </StackPanel>
-                    <Grid DataContext="{Binding}">
+                    <Grid DataContext="{Binding SelectedOrder}">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
@@ -72,37 +72,37 @@
                         <Label
                             Grid.Row="0"
                             Grid.Column="1"
-                            Content="{Binding Path=SelectedOrder.OrderStatus}" />
+                            Content="{Binding OrderStatus}" />
 
                         <Label Grid.Row="1" Grid.Column="0">Required date</Label>
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
-                            Content="{Binding Path=SelectedOrder.RequiredDate}" />
+                            Content="{Binding RequiredDate}" />
 
                         <Label Grid.Row="2" Grid.Column="0">Shipped date</Label>
                         <Label
                             Grid.Row="2"
                             Grid.Column="1"
-                            Content="{Binding Path=SelectedOrder.ShippedDate}" />
+                            Content="{Binding ShippedDate}" />
 
                         <Label Grid.Row="3" Grid.Column="0">Processed by</Label>
                         <Label
                             Grid.Row="3"
                             Grid.Column="1"
-                            Content="{Binding Path=SelectedOrder.StaffId}" />
+                            Content="{Binding StaffName}" />
 
                         <Label Grid.Row="4" Grid.Column="0">Deliver to</Label>
                         <Label
                             Grid.Row="4"
                             Grid.Column="1"
-                            Content="{Binding Path=SelectedOrder.Store}" />
+                            Content="{Binding DeliveryAddress}" />
 
                         <Label Grid.Row="5" Grid.Column="0">Contact number</Label>
                         <Label
                             Grid.Row="5"
                             Grid.Column="1"
-                            Content="{Binding Path=SelectedOrder.Store}" />
+                            Content="{Binding Phone}" />
                     </Grid>
                 </StackPanel>
             </Border>
@@ -116,7 +116,7 @@
                     <Grid Background="Aquamarine">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
-                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0">Customers</Label>
                         <StackPanel
@@ -124,12 +124,18 @@
                             HorizontalAlignment="Right"
                             Orientation="Horizontal">
                             <Label>All</Label>
-                            <RadioButton VerticalAlignment="Center" IsChecked="True" />
-                            <Label>Open orders</Label>
-                            <RadioButton VerticalAlignment="Center" />
+                            <RadioButton
+                                VerticalAlignment="Center"
+                                Command="{Binding AllCustomersRadioButtonCommand}"
+                                IsChecked="True" />
+                            <Label>With in-process orders</Label>
+                            <RadioButton
+                                VerticalAlignment="Center"
+                                Command="{Binding ByActiveCustomersRadioButtonCommand}"
+                                IsChecked="True" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=Customers}" SelectedItem="{Binding Path=SelectedCustomer}">
+                    <ListView ItemsSource="{Binding Path=CustomersToShow}" SelectedItem="{Binding Path=SelectedCustomer}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">

@@ -179,7 +179,7 @@ namespace MyCrmModel
             {
                 Id = 4,
                 OrderDate = DateTime.UtcNow,
-                CustomerId = 1,
+                CustomerId = 3,
                 OrderStatus = "Order confirmed",
                 ShippedDate = null,
                 RequiredDate = DateTime.UtcNow.AddDays(5),

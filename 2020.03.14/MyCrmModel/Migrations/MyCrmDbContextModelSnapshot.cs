@@ -303,10 +303,10 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 18, 19, 11, 4, 379, DateTimeKind.Utc).AddTicks(2581),
+                            OrderDate = new DateTime(2020, 3, 18, 21, 21, 33, 979, DateTimeKind.Utc).AddTicks(5773),
                             OrderStatus = "Completed",
-                            RequiredDate = new DateTime(2020, 3, 23, 19, 11, 4, 379, DateTimeKind.Utc).AddTicks(8052),
-                            ShippedDate = new DateTime(2020, 3, 21, 19, 11, 4, 379, DateTimeKind.Utc).AddTicks(6879),
+                            RequiredDate = new DateTime(2020, 3, 23, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(1273),
+                            ShippedDate = new DateTime(2020, 3, 21, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(103),
                             StaffId = 1,
                             StoreId = 1
                         },
@@ -314,9 +314,9 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 2,
                             CustomerId = 2,
-                            OrderDate = new DateTime(2020, 3, 21, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(548),
+                            OrderDate = new DateTime(2020, 3, 21, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3753),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 24, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(616),
+                            RequiredDate = new DateTime(2020, 3, 24, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3817),
                             StaffId = 2,
                             StoreId = 2
                         },
@@ -324,19 +324,19 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 3,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 20, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(666),
+                            OrderDate = new DateTime(2020, 3, 20, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3862),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 22, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(669),
+                            RequiredDate = new DateTime(2020, 3, 22, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3866),
                             StaffId = 1,
                             StoreId = 1
                         },
                         new
                         {
                             Id = 4,
-                            CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 21, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(673),
+                            CustomerId = 3,
+                            OrderDate = new DateTime(2020, 3, 21, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3870),
                             OrderStatus = "Order confirmed",
-                            RequiredDate = new DateTime(2020, 3, 26, 19, 11, 4, 380, DateTimeKind.Utc).AddTicks(675),
+                            RequiredDate = new DateTime(2020, 3, 26, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3872),
                             StaffId = 1,
                             StoreId = 1
                         });
