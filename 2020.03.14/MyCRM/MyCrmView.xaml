@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:MyCrmView"
     xmlns:vm="clr-namespace:MyCrmViewModel;assembly=MyCrmViewModel"
-    Title="MainWindow"
+    Title="MyCRM"
     Width="820"
     Height="500"
     mc:Ignorable="d">

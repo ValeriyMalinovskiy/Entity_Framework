@@ -33,13 +33,13 @@
                             <Label>In-process</Label>
                             <RadioButton
                                 VerticalAlignment="Center"
-                                Command="{Binding Path=AllRadioButtonCommand}"
+                                Command="{Binding ShowActiveOrdersCommand}"
                                 IsChecked="True" />
                             <Label>By customer</Label>
-                            <RadioButton VerticalAlignment="Center" Command="{Binding Path=ByCustomerRadioButtonCommand}" />
+                            <RadioButton VerticalAlignment="Center" Command="{Binding ShowOrdersByCustomerCommand}" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=OrdersToShow}" SelectedItem="{Binding Path=SelectedOrder}" />
+                    <ListView ItemsSource="{Binding OrdersToShow}" SelectedItem="{Binding SelectedOrder}" />
                 </StackPanel>
             </Border>
         </Grid>
@@ -73,25 +73,21 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             Content="{Binding OrderStatus}" />
-
                         <Label Grid.Row="1" Grid.Column="0">Required date</Label>
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
                             Content="{Binding RequiredDate}" />
-
                         <Label Grid.Row="2" Grid.Column="0">Shipped date</Label>
                         <Label
                             Grid.Row="2"
                             Grid.Column="1"
                             Content="{Binding ShippedDate}" />
-
                         <Label Grid.Row="3" Grid.Column="0">Processed by</Label>
                         <Label
                             Grid.Row="3"
                             Grid.Column="1"
                             Content="{Binding StaffName}" />
-
                         <Label Grid.Row="4" Grid.Column="0">Deliver to</Label>
                         <Label
                             Grid.Row="4"
@@ -103,7 +99,6 @@
                             Grid.Row="5"
                             Grid.Column="1"
                             Content="{Binding Phone}" />
-
                         <ListView
                             Grid.Row="7"
                             Grid.Column="0"
@@ -147,8 +142,6 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-
-
                     </Grid>
                 </StackPanel>
             </Border>
@@ -172,16 +165,13 @@
                             <Label>All</Label>
                             <RadioButton
                                 VerticalAlignment="Center"
-                                Command="{Binding AllCustomersRadioButtonCommand}"
+                                Command="{Binding ShowAllCustomersCommand}"
                                 IsChecked="True" />
                             <Label>With in-process orders</Label>
-                            <RadioButton
-                                VerticalAlignment="Center"
-                                Command="{Binding ByActiveCustomersRadioButtonCommand}"
-                                IsChecked="True" />
+                            <RadioButton VerticalAlignment="Center" Command="{Binding ShowCustomersWithActiveOrdersCommand}" />
                         </StackPanel>
                     </Grid>
-                    <ListView ItemsSource="{Binding Path=CustomersToShow}" SelectedItem="{Binding Path=SelectedCustomer}">
+                    <ListView ItemsSource="{Binding CustomersToShow}" SelectedItem="{Binding SelectedCustomer}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">

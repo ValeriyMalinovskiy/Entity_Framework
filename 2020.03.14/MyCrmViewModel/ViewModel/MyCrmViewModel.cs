@@ -1,4 +1,5 @@
 ﻿using MyCrmModel;
+using MyCrmModel.Production;
 using MyCrmModel.Sales;
 using MyCrmViewModel.Command;
 using MyCrmViewModel.CustomClass;
@@ -14,11 +15,19 @@ namespace MyCrmViewModel
     {
         public MyCrmDbContext dbContext { get; set; }
 
-        private IEnumerable<Order> orders;
+        private Order[] orders;
 
-        private ObservableCollection<Customer> customers;
+        private Product[] products;
 
-        private List<Staff> staffs;
+        private Brand[] brands;
+
+        private Category[] categories;
+
+        private Stock[] stocks;
+
+        private Customer[] customers;
+
+        private Staff[] staffs;
 
         private ObservableCollection<CustomOrder> customOrders;
 
@@ -28,28 +37,29 @@ namespace MyCrmViewModel
 
         private CustomOrder selectedOrder;
 
+        private Customer selectedCustomer;
+
         private bool sortByActiveOrder = true;
 
-        private bool sortByActiveCustomer = true;
+        private bool sortByActiveCustomer = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Customer selectedCustomer;
+        public ICommand ShowActiveOrdersCommand { get; set; }
 
-        public ICommand AllRadioButtonCommand { get; set; }
+        public ICommand ShowOrdersByCustomerCommand { get; set; }
 
-        public ICommand ByCustomerRadioButtonCommand { get; set; }
+        public ICommand ShowCustomersWithActiveOrdersCommand { get; set; }
 
-        public ICommand ByActiveCustomersRadioButtonCommand { get; set; }
-
-        public ICommand AllCustomersRadioButtonCommand { get; set; }
+        public ICommand ShowAllCustomersCommand { get; set; }
 
         public MyCrmViewModel()
         {
-            this.AllRadioButtonCommand = new RelayCommand(AllRadioButtonCommandExecuted, CommandCanExecute);
-            this.ByCustomerRadioButtonCommand = new RelayCommand(ByCustomerRadioButtonCommandExecuted, ByCustomerRadioButtonCommandCanExecute);
-            this.AllCustomersRadioButtonCommand = new RelayCommand(AllCustomersRadioButtonCommandExecuted, CommandCanExecute);
-            this.ByActiveCustomersRadioButtonCommand = new RelayCommand(ByActiveCustomersRadioButtonCommandExecuted, CommandCanExecute);
+            this.ShowActiveOrdersCommand = new RelayCommand(ShowActiveOrdersCommandExecuted, CommandCanExecute);
+            this.ShowOrdersByCustomerCommand = new RelayCommand(ShowOrdersByCustomerCommandExecuted, ByCustomerRadioButtonCommandCanExecute);
+            this.ShowAllCustomersCommand = new RelayCommand(ShowAllCustomersCommandExecuted, CommandCanExecute);
+            this.ShowCustomersWithActiveOrdersCommand = new RelayCommand(ShowCustomersWithActiveOrdersCommandExecuted, CommandCanExecute);
+            LoadData();
             PrepareView();
         }
 
@@ -72,41 +82,67 @@ namespace MyCrmViewModel
             return true;
         }
 
-        private void AllRadioButtonCommandExecuted(object obj)
+        private void ShowOrdersByCustomerCommandExecuted(object obj)
         {
             this.sortByActiveOrder = false;
             SortOrders();
         }
 
-        private void ByCustomerRadioButtonCommandExecuted(object obj)
+        private void ShowCustomersWithActiveOrdersCommandExecuted(object obj)
+        {
+            this.sortByActiveCustomer = true;
+            SortCustomers();
+            SortOrders();
+        }
+
+        private void ShowActiveOrdersCommandExecuted(object obj)
         {
             this.sortByActiveOrder = true;
             SortOrders();
         }
 
-        private void ByActiveCustomersRadioButtonCommandExecuted(object obj)
-        {
-            this.sortByActiveCustomer = true;
-            SortCustomers();
-        }
-
-        private void AllCustomersRadioButtonCommandExecuted(object obj)
+        private void ShowAllCustomersCommandExecuted(object obj)
         {
             this.sortByActiveCustomer = false;
             SortCustomers();
+            SortOrders();
         }
 
         private void SortOrders()
         {
-            if (this.sortByActiveOrder && this.SelectedCustomer != null)
-            {
-                this.OrdersToShow = new ObservableCollection<CustomOrder>(this.CustomOrders.
-                    Where(o => o.CustomerId == this.SelectedCustomer.Id));
-            }
-            else
+            if (this.sortByActiveOrder && !this.sortByActiveCustomer)
             {
                 this.OrdersToShow = new ObservableCollection<CustomOrder>(this.CustomOrders.
                     Where(o => o.OrderStatus != "Completed"));
+            }
+            else if (this.sortByActiveOrder && this.sortByActiveCustomer)
+            {
+                this.OrdersToShow = new ObservableCollection<CustomOrder>(this.CustomOrders.
+                    Where(o => o.OrderStatus != "Completed"));
+            }
+            else if (!this.sortByActiveOrder && !this.sortByActiveCustomer)
+            {
+                if (this.SelectedCustomer != null)
+                {
+                    this.OrdersToShow = new ObservableCollection<CustomOrder>(this.CustomOrders.
+                        Where(o => o.CustomerId == this.SelectedCustomer.Id));
+                }
+                else
+                {
+                    this.OrdersToShow = null;
+                }
+            }
+            else if (!this.sortByActiveOrder && this.sortByActiveCustomer)
+            {
+                if (this.SelectedCustomer != null)
+                {
+                    this.OrdersToShow = new ObservableCollection<CustomOrder>(this.CustomOrders.
+                        Where(o => o.CustomerId == this.SelectedCustomer.Id));
+                }
+                else
+                {
+                    this.OrdersToShow = null;
+                }
             }
         }
 
@@ -118,7 +154,7 @@ namespace MyCrmViewModel
                 var inProcessOrders = this.orders.Where(o => o.OrderStatus != "Completed");
                 foreach (var order in inProcessOrders)
                 {
-                    foreach (var customer in this.Customers)
+                    foreach (var customer in this.customers)
                     {
                         if (order.CustomerId == customer.Id && !this.CustomersToShow.Contains(customer))
                         {
@@ -129,12 +165,8 @@ namespace MyCrmViewModel
             }
             else
             {
-                this.CustomersToShow = new ObservableCollection<Customer>(this.Customers);
+                this.CustomersToShow = new ObservableCollection<Customer>(this.customers);
             }
-        }
-
-        private void ProcessCustomerSortingCommandExecuted(object obj)
-        {
         }
 
         public ObservableCollection<CustomOrder> CustomOrders
@@ -153,22 +185,6 @@ namespace MyCrmViewModel
             }
         }
 
-        public ObservableCollection<Customer> Customers
-        {
-            get
-            {
-                return this.customers;
-            }
-            set
-            {
-                if (value != this.customers)
-                {
-                    this.customers = value;
-                    OnPropertyChanged(nameof(this.customers));
-                }
-            }
-        }
-
         public Customer SelectedCustomer
         {
             get
@@ -180,8 +196,8 @@ namespace MyCrmViewModel
                 if (value != this.selectedCustomer)
                 {
                     this.selectedCustomer = value;
-                    OnPropertyChanged(nameof(this.selectedCustomer));
                     SortOrders();
+                    OnPropertyChanged(nameof(this.selectedCustomer));
                 }
             }
         }
@@ -232,7 +248,7 @@ namespace MyCrmViewModel
         {
             if (this.SelectedOrder != null)
             {
-                this.SelectedOrder.Phone = this.Customers.Single(c => c.Id == this.SelectedOrder.CustomerId).Phone;
+                this.SelectedOrder.Phone = this.customers.Single(c => c.Id == this.SelectedOrder.CustomerId).Phone;
             }
         }
 
@@ -240,7 +256,7 @@ namespace MyCrmViewModel
         {
             if (this.SelectedOrder != null)
             {
-                var customer = this.Customers.Single(c => c.Id == this.SelectedOrder.CustomerId);
+                var customer = this.customers.Single(c => c.Id == this.SelectedOrder.CustomerId);
                 this.SelectedOrder.DeliveryAddress = $"{customer.City} {customer.Street}";
             }
         }
@@ -266,17 +282,24 @@ namespace MyCrmViewModel
 
         private void PrepareView()
         {
+            SortOrders();
+            SortCustomers();
+        }
+
+        private void LoadData()
+        {
             this.dbContext = new MyCrmModel.MyCrmDbContext();
-            this.staffs = new List<Staff>(this.dbContext.Staffs);
+            this.staffs = this.dbContext.Staffs.ToArray();
             this.orders = this.dbContext.Orders.ToArray();
             this.CustomOrders = new ObservableCollection<CustomOrder>();
             foreach (var order in this.orders)
             {
                 this.CustomOrders.Add(new CustomOrder(order));
             }
-            this.Customers = new ObservableCollection<Customer>(this.dbContext.Customers);
-            SortOrders();
-            SortCustomers();
+            this.customers = this.dbContext.Customers.ToArray();
+            this.brands = this.dbContext.Brands.ToArray();
+            this.categories = this.dbContext.Categories.ToArray();
+            this.stocks = this.dbContext.Stocks.ToArray();
         }
     }
 }
