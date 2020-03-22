@@ -16,6 +16,8 @@
     <Compile Remove="Migrations\20200321235031_CreateDb.Designer.cs" />
     <Compile Remove="Migrations\20200321235411_CreateDb.cs" />
     <Compile Remove="Migrations\20200321235411_CreateDb.Designer.cs" />
+    <Compile Remove="Migrations\20200322000221_CreateDb.cs" />
+    <Compile Remove="Migrations\20200322000221_CreateDb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

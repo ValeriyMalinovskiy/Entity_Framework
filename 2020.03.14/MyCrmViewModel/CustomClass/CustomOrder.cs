@@ -1,7 +1,4 @@
 ﻿using MyCrmModel.Sales;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyCrmViewModel.CustomClass
 {
@@ -40,7 +37,6 @@ namespace MyCrmViewModel.CustomClass
         public override string ToString()
         {
             return $"Order {this.Id:0000}\t{this.OrderDate:d}\t{GetOrderSum():n2}";
-            ;
         }
     }
 }

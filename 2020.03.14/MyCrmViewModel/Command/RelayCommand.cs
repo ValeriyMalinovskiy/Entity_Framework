@@ -39,7 +39,6 @@ namespace MyCrmViewModel.Command
                 CommandManager.RequerySuggested += value;
                 CanExecuteChangedInternal += value;
             }
-
             remove
             {
                 CommandManager.RequerySuggested -= value;

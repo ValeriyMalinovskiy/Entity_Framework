@@ -20,6 +20,5 @@ namespace MyCrmModel.Production
         public virtual List<Stock> Stocks { get; set; }
 
         public virtual List<OrderItem> OrderItems { get; set; }
-
     }
 }

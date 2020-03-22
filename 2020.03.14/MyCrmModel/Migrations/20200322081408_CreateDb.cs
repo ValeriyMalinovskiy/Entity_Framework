@@ -258,8 +258,9 @@ namespace MyCrmModel.Migrations
                 columns: new[] { "product_id", "brand_id", "category_id", "list_price", "model_year", "product_name" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, 3m, 2000, "Bounty" },
-                    { 2, 2, 2, 10m, 1998, "Pepsi" }
+                    { 1, 1, 1, 3m, 2000, "Bounty X2" },
+                    { 2, 2, 2, 4m, 1998, "Pepsi 0.5" },
+                    { 3, 2, 2, 5m, 1998, "Pepsi 1" }
                 });
 
             migrationBuilder.InsertData(
@@ -276,10 +277,10 @@ namespace MyCrmModel.Migrations
                 columns: new[] { "order_id", "customer_id", "order_date", "order_status", "required_date", "shipped_date", "staff_id", "store_id" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2020, 3, 19, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(1415), "Completed", new DateTime(2020, 3, 24, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(6797), new DateTime(2020, 3, 22, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(5640), 1, 1 },
-                    { 3, 1, new DateTime(2020, 3, 21, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9276), "Pending processing", new DateTime(2020, 3, 23, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9279), null, 1, 1 },
-                    { 4, 3, new DateTime(2020, 3, 22, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9283), "Order confirmed", new DateTime(2020, 3, 27, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9285), null, 1, 1 },
-                    { 2, 2, new DateTime(2020, 3, 22, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9166), "Pending processing", new DateTime(2020, 3, 25, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9227), null, 2, 2 }
+                    { 1, 1, new DateTime(2020, 3, 19, 8, 14, 7, 268, DateTimeKind.Utc).AddTicks(7855), "Completed", new DateTime(2020, 3, 24, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(1724), new DateTime(2020, 3, 22, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(548), 1, 1 },
+                    { 3, 1, new DateTime(2020, 3, 21, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(4106), "Pending processing", new DateTime(2020, 3, 23, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(4109), null, 1, 1 },
+                    { 4, 3, new DateTime(2020, 3, 22, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(4113), "Order confirmed", new DateTime(2020, 3, 27, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(4115), null, 1, 1 },
+                    { 2, 2, new DateTime(2020, 3, 22, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(3995), "Pending processing", new DateTime(2020, 3, 25, 8, 14, 7, 269, DateTimeKind.Utc).AddTicks(4060), null, 2, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -288,7 +289,8 @@ namespace MyCrmModel.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 100000 },
-                    { 1, 2, 500000 }
+                    { 1, 2, 500000 },
+                    { 1, 3, 60000 }
                 });
 
             migrationBuilder.InsertData(

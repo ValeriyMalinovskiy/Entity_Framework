@@ -3,7 +3,6 @@ using MyCrmModel.Production;
 using MyCrmModel.Sales;
 using MyCrmViewModel.Command;
 using MyCrmViewModel.CustomClass;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -13,7 +12,7 @@ namespace MyCrmViewModel
 {
     public class MyCrmViewModel : INotifyPropertyChanged
     {
-        public MyCrmDbContext dbContext { get; set; }
+        private MyCrmDbContext dbContext;
 
         private Order[] orders;
 
@@ -23,19 +22,21 @@ namespace MyCrmViewModel
 
         private Category[] categories;
 
-        private Stock[] stocks;
-
         private Customer[] customers;
 
         private Staff[] staffs;
 
         private ObservableCollection<CustomOrder> customOrders;
 
+        private ObservableCollection<CustomProduct> customProducts;
+
         private ObservableCollection<CustomOrder> ordersToShow;
 
         private ObservableCollection<Customer> customersToShow;
 
         private CustomOrder selectedOrder;
+
+        private CustomProduct selectedProduct;
 
         private Customer selectedCustomer;
 
@@ -185,6 +186,22 @@ namespace MyCrmViewModel
             }
         }
 
+        public ObservableCollection<CustomProduct> CustomProducts
+        {
+            get
+            {
+                return this.customProducts;
+            }
+            set
+            {
+                if (value != this.customProducts)
+                {
+                    this.customProducts = value;
+                    OnPropertyChanged(nameof(this.customProducts));
+                }
+            }
+        }
+
         public Customer SelectedCustomer
         {
             get
@@ -234,14 +251,31 @@ namespace MyCrmViewModel
             }
         }
 
-        private string GetStaffName()
+        private void GetStaffName()
         {
             if (this.SelectedOrder != null)
             {
                 var staff = this.staffs.Single(s => s.Id == this.SelectedOrder.StaffId);
                 this.SelectedOrder.StaffName = $"{staff.FirstName} {staff.LastName}";
             }
-            return null;
+        }
+
+        private void GetProductBrandName()
+        {
+            if (this.SelectedProduct != null)
+            {
+                var brand = this.brands.Single(b => b.Id == this.SelectedProduct.BrandId);
+                this.SelectedProduct.Brand = brand.Name; ;
+            }
+        }
+
+        private void GetProductCategory()
+        {
+            if (this.SelectedProduct != null)
+            {
+                var category = this.categories.Single(c => c.Id == this.SelectedProduct.CategoryId);
+                this.SelectedProduct.Category = category.Name; ;
+            }
         }
 
         private void GetCustomerPhone()
@@ -280,6 +314,24 @@ namespace MyCrmViewModel
             }
         }
 
+        public CustomProduct SelectedProduct
+        {
+            get
+            {
+                return this.selectedProduct;
+            }
+            set
+            {
+                if (value != this.selectedProduct)
+                {
+                    this.selectedProduct = value;
+                    GetProductBrandName();
+                    GetProductCategory();
+                    OnPropertyChanged(nameof(this.selectedProduct));
+                }
+            }
+        }
+
         private void PrepareView()
         {
             SortOrders();
@@ -292,14 +344,19 @@ namespace MyCrmViewModel
             this.staffs = this.dbContext.Staffs.ToArray();
             this.orders = this.dbContext.Orders.ToArray();
             this.CustomOrders = new ObservableCollection<CustomOrder>();
+            this.CustomProducts = new ObservableCollection<CustomProduct>();
             foreach (var order in this.orders)
             {
                 this.CustomOrders.Add(new CustomOrder(order));
             }
+            this.products = this.dbContext.Products.ToArray();
+            foreach (var product in this.products)
+            {
+                this.CustomProducts.Add(new CustomProduct(product));
+            }
             this.customers = this.dbContext.Customers.ToArray();
             this.brands = this.dbContext.Brands.ToArray();
             this.categories = this.dbContext.Categories.ToArray();
-            this.stocks = this.dbContext.Stocks.ToArray();
         }
     }
 }

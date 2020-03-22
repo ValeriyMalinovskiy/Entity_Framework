@@ -29,7 +29,6 @@ namespace MyCrmModel
         {
             optionsBuilder.UseLazyLoadingProxies().
             UseSqlServer("Server=DESKTOP-J0F1AGE;Database=MyCrmDatabase;Trusted_Connection=True");
-            //VMALINOV2
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -116,7 +115,6 @@ namespace MyCrmModel
                 .HasOne<Product>(orderItem => orderItem.Product)
                 .WithMany(product => product.OrderItems)
                 .HasForeignKey(orderItem => orderItem.ProductId);
-
             modelBuilder.Entity<Order>()
                 .HasOne(order => order.Store)
                 .WithMany(store => store.Orders)
@@ -212,7 +210,7 @@ namespace MyCrmModel
             {
                 Id = 1,
                 ListPrice = 3,
-                Name = "Bounty",
+                Name = "Bounty X2",
                 ModelYear = 2000,
                 BrandId = 1,
                 CategoryId = 1,
@@ -220,8 +218,17 @@ namespace MyCrmModel
             Product product2 = new Product
             {
                 Id = 2,
-                ListPrice = 10,
-                Name = "Pepsi",
+                ListPrice = 4,
+                Name = "Pepsi 0.5",
+                ModelYear = 1998,
+                BrandId = 2,
+                CategoryId = 2,
+            };
+            Product product3 = new Product
+            {
+                Id = 3,
+                ListPrice = 5,
+                Name = "Pepsi 1",
                 ModelYear = 1998,
                 BrandId = 2,
                 CategoryId = 2,
@@ -243,7 +250,7 @@ namespace MyCrmModel
                 OrderId = 2,
                 ProductId = 2,
                 Quantity = 10
-            };            
+            };
             OrderItem orderItem3 = new OrderItem
             {
                 Discount = 2,
@@ -252,7 +259,7 @@ namespace MyCrmModel
                 OrderId = 3,
                 ProductId = 1,
                 Quantity = 8
-            };          
+            };
             OrderItem orderItem5 = new OrderItem
             {
                 Discount = 1,
@@ -281,6 +288,12 @@ namespace MyCrmModel
             {
                 ProductId = 2,
                 Quantity = 500000,
+                StoreId = 1
+            };
+            Stock stock3 = new Stock
+            {
+                ProductId = 3,
+                Quantity = 60000,
                 StoreId = 1
             };
             Store store1 = new Store
@@ -340,7 +353,7 @@ namespace MyCrmModel
                 State = "Kh",
                 Street = "Nauki ave",
                 ZipCode = 61022
-            };           
+            };
             Customer customer4 = new Customer
             {
                 Id = 4,
@@ -352,8 +365,8 @@ namespace MyCrmModel
                 State = "Sm",
                 Street = "Shkol'naya str",
                 ZipCode = 41429
-            };  
-            
+            };
+
             modelBuilder.Entity<Customer>().HasData(customer1);
             modelBuilder.Entity<Customer>().HasData(customer2);
             modelBuilder.Entity<Customer>().HasData(customer3);
@@ -362,10 +375,12 @@ namespace MyCrmModel
             modelBuilder.Entity<Staff>().HasData(staff2);
             modelBuilder.Entity<Stock>().HasData(stock1);
             modelBuilder.Entity<Stock>().HasData(stock2);
+            modelBuilder.Entity<Stock>().HasData(stock3);
             modelBuilder.Entity<Store>().HasData(store1);
             modelBuilder.Entity<Store>().HasData(store2);
             modelBuilder.Entity<Product>().HasData(product1);
             modelBuilder.Entity<Product>().HasData(product2);
+            modelBuilder.Entity<Product>().HasData(product3);
             modelBuilder.Entity<OrderItem>().HasData(orderItem1);
             modelBuilder.Entity<OrderItem>().HasData(orderItem2);
             modelBuilder.Entity<OrderItem>().HasData(orderItem3);
