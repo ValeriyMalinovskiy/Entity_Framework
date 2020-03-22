@@ -1,0 +1,24 @@
+﻿<Window
+    x:Class="MyCrmView.MyCrmView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:MyCrmView"
+    xmlns:vm="clr-namespace:MyCrmViewModel;assembly=MyCrmViewModel"
+    Title="MyCRM"
+    Width="820"
+    Height="500"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <vm:MyCrmViewModel />
+    </Window.DataContext>
+    <TabControl>
+        <TabItem Header="Sales">
+            <views:SalesTab />
+        </TabItem>
+        <TabItem Header="Production">
+            <views:ProductionTab />
+        </TabItem>
+    </TabControl>
+</Window>
