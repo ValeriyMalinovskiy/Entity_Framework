@@ -10,6 +10,12 @@
     <Compile Remove="Migrations\20200321185003_CreateDb.Designer.cs" />
     <Compile Remove="Migrations\20200321191105_CreateDb.cs" />
     <Compile Remove="Migrations\20200321191105_CreateDb.Designer.cs" />
+    <Compile Remove="Migrations\20200321212135_CreateDb.cs" />
+    <Compile Remove="Migrations\20200321212135_CreateDb.Designer.cs" />
+    <Compile Remove="Migrations\20200321235031_CreateDb.cs" />
+    <Compile Remove="Migrations\20200321235031_CreateDb.Designer.cs" />
+    <Compile Remove="Migrations\20200321235411_CreateDb.cs" />
+    <Compile Remove="Migrations\20200321235411_CreateDb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

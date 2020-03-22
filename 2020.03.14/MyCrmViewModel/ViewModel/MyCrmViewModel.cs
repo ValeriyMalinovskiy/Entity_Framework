@@ -28,9 +28,9 @@ namespace MyCrmViewModel
 
         private CustomOrder selectedOrder;
 
-        private bool sortByActiveOrder;
+        private bool sortByActiveOrder = true;
 
-        private bool sortByActiveCustomer;
+        private bool sortByActiveCustomer = true;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

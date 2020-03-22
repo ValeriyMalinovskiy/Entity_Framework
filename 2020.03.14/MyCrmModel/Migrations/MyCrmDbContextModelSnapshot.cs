@@ -249,6 +249,18 @@ namespace MyCrmModel.Migrations
                             State = "Kh",
                             Street = "Nauki ave",
                             ZipCode = 61022
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Sumy",
+                            Email = "fatboy@gmail.com",
+                            FirstName = "Fatboy",
+                            LastName = "Slim",
+                            Phone = "0534378651",
+                            State = "Sm",
+                            Street = "Shkol'naya str",
+                            ZipCode = 41429
                         });
                 });
 
@@ -303,10 +315,10 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 18, 21, 21, 33, 979, DateTimeKind.Utc).AddTicks(5773),
+                            OrderDate = new DateTime(2020, 3, 19, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(1415),
                             OrderStatus = "Completed",
-                            RequiredDate = new DateTime(2020, 3, 23, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(1273),
-                            ShippedDate = new DateTime(2020, 3, 21, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(103),
+                            RequiredDate = new DateTime(2020, 3, 24, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(6797),
+                            ShippedDate = new DateTime(2020, 3, 22, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(5640),
                             StaffId = 1,
                             StoreId = 1
                         },
@@ -314,9 +326,9 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 2,
                             CustomerId = 2,
-                            OrderDate = new DateTime(2020, 3, 21, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3753),
+                            OrderDate = new DateTime(2020, 3, 22, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9166),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 24, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3817),
+                            RequiredDate = new DateTime(2020, 3, 25, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9227),
                             StaffId = 2,
                             StoreId = 2
                         },
@@ -324,9 +336,9 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 3,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2020, 3, 20, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3862),
+                            OrderDate = new DateTime(2020, 3, 21, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9276),
                             OrderStatus = "Pending processing",
-                            RequiredDate = new DateTime(2020, 3, 22, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3866),
+                            RequiredDate = new DateTime(2020, 3, 23, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9279),
                             StaffId = 1,
                             StoreId = 1
                         },
@@ -334,9 +346,9 @@ namespace MyCrmModel.Migrations
                         {
                             Id = 4,
                             CustomerId = 3,
-                            OrderDate = new DateTime(2020, 3, 21, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3870),
+                            OrderDate = new DateTime(2020, 3, 22, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9283),
                             OrderStatus = "Order confirmed",
-                            RequiredDate = new DateTime(2020, 3, 26, 21, 21, 33, 980, DateTimeKind.Utc).AddTicks(3872),
+                            RequiredDate = new DateTime(2020, 3, 27, 0, 2, 20, 517, DateTimeKind.Utc).AddTicks(9285),
                             StaffId = 1,
                             StoreId = 1
                         });
@@ -380,7 +392,7 @@ namespace MyCrmModel.Migrations
                             OrderId = 1,
                             ItemId = 1,
                             Discount = 0m,
-                            ListPrice = 4m,
+                            ListPrice = 3m,
                             ProductId = 1,
                             Quantity = 10
                         },
@@ -398,7 +410,7 @@ namespace MyCrmModel.Migrations
                             OrderId = 3,
                             ItemId = 1,
                             Discount = 2m,
-                            ListPrice = 4m,
+                            ListPrice = 3m,
                             ProductId = 1,
                             Quantity = 8
                         },
@@ -410,6 +422,15 @@ namespace MyCrmModel.Migrations
                             ListPrice = 4m,
                             ProductId = 2,
                             Quantity = 1
+                        },
+                        new
+                        {
+                            OrderId = 3,
+                            ItemId = 2,
+                            Discount = 1m,
+                            ListPrice = 4m,
+                            ProductId = 2,
+                            Quantity = 6
                         });
                 });
 

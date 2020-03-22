@@ -230,7 +230,7 @@ namespace MyCrmModel
             {
                 Discount = 0,
                 ItemId = 1,
-                ListPrice = 4,
+                ListPrice = 3,
                 OrderId = 1,
                 ProductId = 1,
                 Quantity = 10
@@ -248,10 +248,19 @@ namespace MyCrmModel
             {
                 Discount = 2,
                 ItemId = 1,
-                ListPrice = 4,
+                ListPrice = 3,
                 OrderId = 3,
                 ProductId = 1,
                 Quantity = 8
+            };          
+            OrderItem orderItem5 = new OrderItem
+            {
+                Discount = 1,
+                ItemId = 2,
+                ListPrice = 4,
+                OrderId = 3,
+                ProductId = 2,
+                Quantity = 6
             };
             OrderItem orderItem4 = new OrderItem
             {
@@ -331,11 +340,24 @@ namespace MyCrmModel
                 State = "Kh",
                 Street = "Nauki ave",
                 ZipCode = 61022
+            };           
+            Customer customer4 = new Customer
+            {
+                Id = 4,
+                City = "Sumy",
+                Email = "fatboy@gmail.com",
+                FirstName = "Fatboy",
+                LastName = "Slim",
+                Phone = "0534378651",
+                State = "Sm",
+                Street = "Shkol'naya str",
+                ZipCode = 41429
             };  
             
             modelBuilder.Entity<Customer>().HasData(customer1);
             modelBuilder.Entity<Customer>().HasData(customer2);
             modelBuilder.Entity<Customer>().HasData(customer3);
+            modelBuilder.Entity<Customer>().HasData(customer4);
             modelBuilder.Entity<Staff>().HasData(staff1);
             modelBuilder.Entity<Staff>().HasData(staff2);
             modelBuilder.Entity<Stock>().HasData(stock1);
@@ -348,6 +370,7 @@ namespace MyCrmModel
             modelBuilder.Entity<OrderItem>().HasData(orderItem2);
             modelBuilder.Entity<OrderItem>().HasData(orderItem3);
             modelBuilder.Entity<OrderItem>().HasData(orderItem4);
+            modelBuilder.Entity<OrderItem>().HasData(orderItem5);
             modelBuilder.Entity<Order>().HasData(order1);
             modelBuilder.Entity<Order>().HasData(order2);
             modelBuilder.Entity<Order>().HasData(order3);

@@ -7,8 +7,8 @@
     xmlns:views="clr-namespace:MyCrmView"
     xmlns:vm="clr-namespace:MyCrmViewModel;assembly=MyCrmViewModel"
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="820"
+    Height="500"
     mc:Ignorable="d">
     <Window.DataContext>
         <vm:MyCrmViewModel />
